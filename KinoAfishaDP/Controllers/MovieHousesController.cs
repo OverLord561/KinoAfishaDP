@@ -19,10 +19,11 @@ namespace KinoAfishaDP.Controllers
         public ActionResult Index(string name)
         {
             TempData["cinemainfo"] = name;
-             
-            var stations = name != null ? db.MovieHouses.Where(x => x.MovieHouseName.Contains(name)).OrderByDescending(x=>x.MovieHouseRating) : db.MovieHouses.OrderByDescending(x=>x.MovieHouseRating);
 
-            
+            var stations = name != null ? db.MovieHouses.Where(x => x.MovieHouseName.Contains(name)).OrderByDescending(x => x.MovieHouseRating) : db.MovieHouses.OrderByDescending(x => x.MovieHouseRating);
+            //var stations = db.MovieHouses.Take(5).OrderByDescending(x => x.MovieHouseRating);
+            //var stations = name != null ? db.MovieHouses.Where(x => x.MovieHouseName.Contains(name)) : db.MovieHouses;
+
             return View(stations.ToList());
         }
         [HttpPost]

@@ -7,9 +7,9 @@
 }
 @section scripts
         {
-            <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript" src="http://scriptjava.net/source/scriptjava/scriptjava.js"></script>
-    
+
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", init, false);
         function init() {
@@ -17,23 +17,23 @@
                 delete localStorage['frm_reload'];
                 mess();
             }
-                var a = document.getElementById('but');
-               
-                function mess() {
-                    alert("Дякуємо, за Ваш коментар!");
-                }
-                a.addEventListener("click", reload, false);
-              
-                function reload() {
-                    localStorage['frm_reload'] = '1';
-                    document.location.reload();
-                    document.cookie = "golos";
-                }
-            }
-    </script>
-            }
+            var a = document.getElementById('but');
 
-           
+            function mess() {
+                alert("Дякуємо, за Ваш коментар!");
+            }
+            a.addEventListener("click", reload, false);
+
+            function reload() {
+                localStorage['frm_reload'] = '1';
+                document.location.reload();
+                document.cookie = "golos";
+            }
+        }
+    </script>
+}
+
+
 
 @section Owl
     {
@@ -45,7 +45,7 @@
 
 
 @{var tr = "https://www.youtube.com/results?search_query=" + Model.FilmName_Review;}
-<table border="1" >
+<table border="1">
     <tr>
         <th>Назва фільму
         </th>
@@ -78,7 +78,7 @@
             @Html.DisplayFor(model => Model.FilmReview_Review)
         </td>
 
-       
+
     </tr>
 
 
@@ -90,29 +90,42 @@
     <img src="@Model.FilmPictures_Review.Split(',')[3]" width="300" height="250" alt ="Pictures"/>
     <img src="@Model.FilmPictures_Review.Split(',')[4]" width="300" height="250" alt ="Pictures"/>
 </div>
-<div id="baran" >
-    @Model.Plus_Review <br />
-@Model.Minus_Review <br/>
+<div id="baran">
+    @Model.Plus_Review
+    <br />
+    @Model.Minus_Review
+    <br />
 
 </div>
-  @using (@Html.BeginForm("Review","Films"))
-        {
+@using (@Html.BeginForm("Review", "Films"))
+{
             
-            <button name="action" value="add" >Подобається</button>
-             <button name="action" value="minus" >Неподобається</button>            
-        }
+    <button name="action" value="add">Подобається</button>
+    <button name="action" value="minus">Неподобається</button>            
+}
 
-
-@section OwlScript{
+<h3>Поділись фільмом з друзями:</h3>
+<script type="text/javascript">(function () {
+    if (window.pluso) if (typeof window.pluso.start == "function") return;
+    if (window.ifpluso == undefined) {
+        window.ifpluso = 1;
+        var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+        s.type = 'text/javascript'; s.charset = 'UTF-8'; s.async = true;
+        s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
+        var h = d[g]('body')[0];
+        h.appendChild(s);
+    }
+})();</script>
+<div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,counter,theme=01" data-services="vkontakte,facebook,twitter,google,print"></div>@section OwlScript{
     <script src="~/Content/OwlCarousel/jquery-1.9.1.min.js"></script>
     <script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
-    
+
     <script>
         $(document).ready(function () {
             $("#carousel").owlCarousel({
                 autoplay: true,
                 autoplayTimeout: 3500,
-                items:3,
+                items: 3,
                 loop: true,
                 margin: 10,
                 nav: true,
@@ -130,5 +143,5 @@
             })
         })
     </script>
-    }
+}
 @Html.Action("LabelView", "Films", new { num = Model.FilmId_Review })

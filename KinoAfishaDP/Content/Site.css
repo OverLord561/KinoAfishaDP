@@ -40,7 +40,7 @@
 	
 body {
     background-color: #fff;
-    border-top: solid 10px #000;
+    border-top: solid 10px #fff;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -148,17 +148,26 @@ h5, h6 {
         background: url("../Images/heroAccent.png") no-repeat;
     }
 
-header .content-wrapper {
-    padding-top: 20px; 
-    
-}
 
+
+/*header .content-wrapper {
+    padding-top: 20px; 
+    background-color:#c8c8c8;
+    
+}*/
+/*header {
+    clear: both;
+    background-color: #e2e2e2;
+    font-size: .8em;
+    height: 100px;
+}*/
 footer {
     clear: both;
     background-color: #e2e2e2;
     font-size: .8em;
     height: 100px;
 }
+
 
 
 /* site title
@@ -246,11 +255,11 @@ ul#menu {
 .featured {
     /*background-color: #cbf85a;*/
     /*background-image:url(/Content/Images/inot.jpg)*/
-    background-color:black;
+    background-color:#c8c8c8;
 }
 
     .featured .content-wrapper {
-         background-color:white;
+         background-color:#efeeef;
         /*background-image:url(/Content/Images/inot.jpg);*/
         /*background-color: #7ac0da;
         background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);

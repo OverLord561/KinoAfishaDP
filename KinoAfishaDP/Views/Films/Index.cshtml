@@ -19,50 +19,53 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Home</title>
-    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js" ></script>
-   
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+     <link href="~/Content/Site.css" rel="stylesheet">
+
 </head>
 <body>
-  <div>
-    @using (Ajax.BeginForm(options))
-    {         
+  
         <div>
-            <label>Назва</label>
-            @Html.DropDownList("FilmName", String.Empty)
-            <br />
-            <label>Країна</label>
-            @Html.DropDownList("FilmCountry", String.Empty)
+            @using (Ajax.BeginForm(options))
+            {         
+                <div>
+                    <label>Назва</label>
+                    @Html.DropDownList("FilmName", String.Empty)
+                    <br />
+                    <label>Країна</label>
+                    @Html.DropDownList("FilmCountry", String.Empty)
 
-            <label>Дата Виходу</label>
-            @Html.TextBox("data")
-            <br />
-            <label>Жанр</label>
-            @Html.DropDownList("FilmGenre", String.Empty)
-            <br />
-            <label>Акторський склад</label>
-            @Html.TextBox("actor")
-            <br />
+                    <label>Дата Виходу</label>
+                    @Html.TextBox("data")
+                    <br />
+                    <label>Жанр</label>
+                    @Html.DropDownList("FilmGenre", String.Empty)
+                    <br />
+                    <label>Акторський склад</label>
+                    @Html.TextBox("actor")
+                    <br />
 
-        </div>
-        <p>
-            <input type="submit" name="operation" value="Sort" />
-        </p>
+                </div>
+                <p>
+                    <input type="submit" name="operation" value="Sort" />
+                </p>
           
    
-    }
-    @if (TempData.Peek("_UserRole") as string == "Admin")
-    {
-        <p>
-            @Html.ActionLink("Create new", "Create")
-        </p> 
-    }
-     @* Аякс запрос вставлятиме дані в ось це місце*@
-      <div id="tabledata">
-          @Html.Action("Sort")
-      </div>
+            }
+            @if (TempData.Peek("_UserRole") as string == "Admin")
+            {
+                <p>
+                    @Html.ActionLink("Create new", "Create")
+                </p> 
+            }
+@* Аякс запрос вставлятиме дані в ось це місце*@
+            <div id="tabledata">
+                @Html.Action("Sort")
+            </div>
+
+        </div>
+        @section scripts {
+            <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        }
    
-      </div>
-    @section scripts {
-        <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    }</body>
 </html>
