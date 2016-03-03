@@ -1,0 +1,36 @@
+﻿@model KinoAfishaDP.Models.MovieHouse
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>MovieHouse</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieHouseName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieHouseName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieHouseTelephone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieHouseTelephone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieHouseAdress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieHouseAdress)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MovieHouseId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

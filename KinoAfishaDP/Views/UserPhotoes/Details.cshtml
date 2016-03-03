@@ -1,0 +1,29 @@
+﻿@model KinoAfishaDP.Models.UserPhoto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UserPhoto</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Photo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Photo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UserPhotoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

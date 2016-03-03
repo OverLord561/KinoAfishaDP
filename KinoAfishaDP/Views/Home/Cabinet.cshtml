@@ -1,0 +1,60 @@
+﻿@model KinoAfishaDP.Models.UserPhoto
+@{
+    ViewBag.Title = "Cabinet";
+    List<KinoAfishaDP.Models.UserPhoto> userphoto = ViewBag.UserPhoto;
+    
+}
+@*@model KinoAfishaDP.Models.LoginModel*@
+
+<div></div>
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+<div>
+   
+       @if (@ViewBag.zzz != null)
+       { 
+           <h1>Порядковий в UserPhotoes @ViewBag.zzz</h1>;
+       }
+       else 
+       {
+          <h1>Пусто</h1> 
+       }
+
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+        Hello, @User.Identity.Name
+
+        </text>
+    }
+
+   
+</div>
+
+@foreach (var item in userphoto)
+{
+    
+<img width="250" height="200" src="@item.Photo"  />
+    <br />
+    <h3>Порядковий в UserProfile:@item.UserPhotoId</h3>
+    
+  
+}
+
+<h3>Виберіть файл для загрузки</h3>
+
+<form action="@Url.Action("Cabinet", "Home")" method="post" enctype="multipart/form-data">
+    Файл -
+    <input type="file" name="file" />
+    <br />
+    <input type="submit" />
+
+</form>
+ <p>
+        @ViewBag.Message
+    </p>
+ 
+
+

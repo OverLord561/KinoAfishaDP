@@ -1,0 +1,39 @@
+﻿@model IEnumerable<KinoAfishaDP.Models.UserProfile>
+
+@{
+    ViewBag.Title = "DeleteUser";
+}
+
+<h2>DeleteUser</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                    @Html.ActionLink("DeleteUser", "DeleteUser", new { id = item.UserId })<br />
+               
+            </td>
+        </tr>
+    }
+
+</table>

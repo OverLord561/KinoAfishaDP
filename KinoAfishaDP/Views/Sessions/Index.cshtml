@@ -1,0 +1,116 @@
+﻿@model IEnumerable<KinoAfishaDP.Models.Session>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Sessions"))
+{         
+    <div>
+        <label>Назва</label>
+        @Html.DropDownList("FilmName", String.Empty)
+        <br />
+        <label>Країна</label>
+        @Html.DropDownList("Cinema", String.Empty)
+        <br />
+        <h4>Ведіть часові рамки</h4>
+
+        <label>Від</label>
+        <input type="text" name="start" class="some_class" value="" id="some_class_1 " />
+        <label>До</label><input type="text" name="end" class="some_class" value="" id="some_class_2" />
+
+
+    </div>
+    <p>
+        <input type="submit" name="operation" value="Sort" />
+    </p>
+}
+@if (TempData.Peek("_UserRole") as string == "Admin")
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SessionTimePokaz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Film.FilmName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieHouse.MovieHouseName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        string link1 = "/Films/Review?num=" + @item.Film.FilmId.ToString();
+        string link = "/MovieHouses/Index?name=" + @item.MovieHouse.MovieHouseName.ToString();
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionTimePokaz)
+            </td>
+            <td>
+                 <a title="Переглянути детальну інформацію" href=@link1>@Html.DisplayFor(modelItem => item.Film.FilmName)
+                      
+                    </a>
+                @*@Html.DisplayFor(modelItem => item.Film.FilmName)*@
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.MovieHouse.MovieHouseName)*@
+                <a href=@link>@Html.DisplayFor(modelItem => item.MovieHouse.MovieHouseName)</a>
+            </td>
+            <td>
+                @if (TempData.Peek("_UserRole") as string == "Admin")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SessionId }) <br />
+                    @Html.ActionLink("Details", "Details", new { id = item.SessionId }) <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SessionId })<br />
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Picker{
+    <script src="~/Content/js/query.js"></script>
+    <script src="~/Content/js/build/jquery.datetimepicker.full.js"></script>
+    <script>
+
+        $.datetimepicker.setLocale('uk');
+
+        $('#datetimepicker_format').datetimepicker({ value: '2015/04/15 05:03', format: $("#datetimepicker_format_value").val() });
+        $("#datetimepicker_format_change").on("click", function (e) {
+            $("#datetimepicker_format").data('xdsoft_datetimepicker').setOptions({ format: $("#datetimepicker_format_value").val() });
+        });
+        $("#datetimepicker_format_locale").on("change", function (e) {
+            $.datetimepicker.setLocale($(e.currentTarget).val());
+        });
+
+        $('#datetimepicker').datetimepicker({
+            dayOfWeekStart: 1,
+            lang: 'uk',
+            disabledDates: ['1986/01/08', '1986/01/09', '1986/01/10'],
+            startDate: '1986/01/05'
+        });
+        $('#datetimepicker').datetimepicker({ value: '2015/04/15 05:03', step: 10 });
+
+        $('.some_class').datetimepicker({ format: "d/m/Y H:i" });
+
+
+
+
+        $('#datetimepicker_dark').datetimepicker({ theme: 'dark' })
+
+
+    </script>
+}
+
+

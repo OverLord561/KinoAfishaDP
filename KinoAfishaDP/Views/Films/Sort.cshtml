@@ -1,0 +1,109 @@
+﻿@model IEnumerable<KinoAfishaDP.Models.Film>
+
+<table>
+    <tr>
+        @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.FilmId)
+            </th>
+        }
+        <th>
+            @Html.Display("Назва")   
+        </th>
+        <th>
+            @Html.Display("Тривалість")
+        </th>
+        <th>
+            @Html.Display("Рейтинг")
+        </th>
+        <th>
+            @Html.Display("Країна")
+        </th>
+        <th>
+            @Html.Display("Рік випуску")
+        </th>
+        <th>
+            @Html.Display("Жанр")
+        </th>
+        <th>
+            @Html.Display("Зірковий склад")
+        </th>
+        <th>
+            @Html.Display("Про фільм")
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.FilmPictures)
+        </th>*@
+
+
+
+        @*<th></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        string link = "Films/Review?num=" + @item.FilmId.ToString();
+        string way = "/Content/Images/" + item.FilmName + ".png";
+        string toSession = "/Sessions/Index?NameOfFilm=" + @item.FilmName;
+        <tr>
+            @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
+        {
+            <td>
+                @Html.DisplayFor(model => item.FilmId)
+            </td>
+        }
+            <td>
+
+                <a title="Переглянути детальну інформацію" href=@link>@*@Html.DisplayFor(modelItem => item.FilmName)*@
+                    <img src="@way" alt=@item.FilmName>
+                </a>
+                <a title="Переглянути сеанси" href=@toSession>Встигаємо
+                    
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmGenre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmActors)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilmReview)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.FilmPictures)
+            </td>*@
+           @* <td>
+
+
+                <img src="@item.FilmPictures.Split(',')[0]" width="200" height="140" alt ="Pictures"/>
+                <img src="@item.FilmPictures.Split(',')[1]" width="200" height="140" alt ="Pictures"/>
+
+            </td>*@
+
+            <td>
+                @if (TempData.Peek("_UserRole") as string == "Admin")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FilmId })<br /> 
+                    @Html.ActionLink("Details", "Details", new { id = item.FilmId }) <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FilmId })<br />
+                }
+            </td>
+        </tr>
+    }
+
+</table>

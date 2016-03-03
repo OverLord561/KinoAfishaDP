@@ -1,0 +1,134 @@
+﻿@model KinoAfishaDP.Models.Review
+
+@{
+    ViewBag.Title = "Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@section scripts
+        {
+            <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="http://scriptjava.net/source/scriptjava/scriptjava.js"></script>
+    
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", init, false);
+        function init() {
+            if (localStorage['frm_reload'] !== undefined) {
+                delete localStorage['frm_reload'];
+                mess();
+            }
+                var a = document.getElementById('but');
+               
+                function mess() {
+                    alert("Дякуємо, за Ваш коментар!");
+                }
+                a.addEventListener("click", reload, false);
+              
+                function reload() {
+                    localStorage['frm_reload'] = '1';
+                    document.location.reload();
+                    document.cookie = "golos";
+                }
+            }
+    </script>
+            }
+
+           
+
+@section Owl
+    {
+    <!-- owl styles -->
+    <link rel="stylesheet" href="~/Content/OwlCarousel/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/OwlCarousel/owl.theme.default.css" />
+}
+<h2>Review</h2>
+
+
+@{var tr = "https://www.youtube.com/results?search_query=" + Model.FilmName_Review;}
+<table border="1" >
+    <tr>
+        <th>Назва фільму
+        </th>
+        <th>Тривалість фільму
+        </th>
+        <th>Жанр
+        </th>
+        <th>Зірковий склад
+        </th>
+        <th>Опис
+        </th>
+        @*<th>Кадри із фільму
+        </th>*@
+
+    </tr>
+    <tr>
+        <td>
+            <a href=@tr target="_blank" title="Глянути відео в YOUTube">@Html.DisplayFor(model => Model.FilmName_Review) </a>
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.FilmLength_Review)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.FilmGenre_Review)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.FilmActors_Review)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.FilmReview_Review)
+        </td>
+
+       
+    </tr>
+
+
+</table>
+<div id="carousel" class="owl-carousel owl-theme">
+    <img src="@Model.FilmPictures_Review.Split(',')[0]" width="300" height="250" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[1]" width="300" height="250" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[2]" width="300" height="250" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[3]" width="300" height="250" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[4]" width="300" height="250" alt ="Pictures"/>
+</div>
+<div id="baran" >
+    @Model.Plus_Review <br />
+@Model.Minus_Review <br/>
+
+</div>
+  @using (@Html.BeginForm("Review","Films"))
+        {
+            
+            <button name="action" value="add" >Подобається</button>
+             <button name="action" value="minus" >Неподобається</button>            
+        }
+
+
+@section OwlScript{
+    <script src="~/Content/OwlCarousel/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#carousel").owlCarousel({
+                autoplay: true,
+                autoplayTimeout: 3500,
+                items:3,
+                loop: true,
+                margin: 10,
+                nav: true,
+                //responsive: {
+                //    0: {
+                //        items: 1
+                //    },
+                //    600: {
+                //        items: 3
+                //    },
+                //    1000: {
+                //        items: 5
+                //    }
+                //}
+            })
+        })
+    </script>
+    }
+@Html.Action("LabelView", "Films", new { num = Model.FilmId_Review })

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<KinoAfishaDP.Models.UserComment>
+
+@{
+    ViewBag.Title = "Index";
+    var grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+@*@section Commentstyle
+{
+    <link href="~/Content/themes/GridStyles.css" rel="stylesheet" />    
+}*@
+
+<h2>Index</h2>
+@if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
+{
+    <p>
+       @Html.ActionLink("Всі коментарі", "Index")
+    </p>
+}
+@using (@Html.BeginForm())
+{
+     <label>Ім'я користувача</label> @Html.TextBox("name")<br />  
+    <h3>Вкажіть часові рамки в короткому форматі: місяць/день/рік</h3>
+    <label>Від</label> @Html.TextBox("start")<br /> 
+    <label>До</label> @Html.TextBox("end")<br /> 
+    <label>Ім'я зареэстрованого користувача</label> @Html.TextBox("nickname")<br />    
+    <input type="submit" value="Шукати" />
+}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserNickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LabelText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.E_mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        string linknickname = "/UserComments/Index?nickname=" + @item.UserNickName;
+        var mail ="mailto:";
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewID)
+            </td>
+            <td>
+               <a href =@linknickname>@Html.DisplayFor(modelItem => item.UserNickName)</a> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LabelText)
+            </td>
+            <td>
+               <a title="Написати повідомлення" href=@mail+@Html.DisplayFor(modelItem => item.E_mail)>@Html.DisplayFor(modelItem => item.E_mail)</a>
+            </td>
+            <td>
+ @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
+                    {
+                        string link1 = "/UserComments/Index?name=" + @item.Name;
+                   
+                        string link = link1;
+                        <a href=@link>@item.Name</a>
+                    }
+            else 
+            {
+                @Html.DisplayFor(modelItem => item.Name)
+            }
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @if (TempData.Peek("_UserRole") as string == "Admin")
+                {
+                           
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <br />
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })<br />
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+@*<div>
+
+          @grid.GetHtml(
+    tableStyle: "grid",
+              headerStyle: "header",
+              rowStyle: "row",
+              alternatingRowStyle: "alt-row",
+              footerStyle: "footer",
+              htmlAttributes: new { cellpadding = "6px", cellspacing = "0px" },
+    columns: grid.Columns(
+    grid.Column(columnName: "Id",header:"Порядковий номер"),
+    grid.Column(columnName: "ReviewID",header:"Номер фільма"),
+    grid.Column(columnName: "LabelText",header:"Повідомлення",canSort:false),
+    grid.Column(columnName: "E_mail", header:"E_mail",canSort:false),
+    grid.Column(columnName: "Name",header:"Ім'я"),
+    grid.Column(columnName: "Date", header :"Дата публікації")     
+    )
+)
+
+</div>*@

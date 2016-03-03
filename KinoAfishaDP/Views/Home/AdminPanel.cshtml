@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Admin Panel";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+    
+</hgroup>
+
+@using (Html.BeginForm("AdminPanel", "Home"))
+        {
+             
+             
+    @Html.DropDownList("list1",
+                        new SelectList(new[] { "Films","Sessions", "MovieHouses","UserComments"}))              
+           
+            <input type="submit" name="operation" value="Перейти до редагування"/>
+        }
+@if(ViewBag.Result!=null)
+              {
+                  <h3>Результат = @ViewBag.Result</h3>
+              }
+
+
+
+
+
+@Html.ActionLink("Create new User","CreateUser","Home")<br />
+@Html.ActionLink("Редагування коментарів","Index","UserComments")<br />
+@Html.ActionLink("Видалити користувача","DeleteUser","Home")<br />
+
+

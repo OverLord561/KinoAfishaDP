@@ -1,0 +1,53 @@
+﻿@model KinoAfishaDP.Models.Session
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Session</legend>
+
+        @Html.HiddenFor(model => model.SessionId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SessionTimePokaz)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SessionTimePokaz)
+            @Html.ValidationMessageFor(model => model.SessionTimePokaz)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmId, "Film")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FilmId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FilmId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MovieHouseId, "MovieHouse")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("MovieHouseId", String.Empty)
+            @Html.ValidationMessageFor(model => model.MovieHouseId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

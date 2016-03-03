@@ -1,0 +1,53 @@
+﻿@model KinoAfishaDP.Models.Film
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Film</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmLength)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmLength)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmGenre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmGenre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmActors)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmActors)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmPictures)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmPictures)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

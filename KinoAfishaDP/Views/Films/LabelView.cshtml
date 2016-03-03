@@ -1,0 +1,93 @@
+﻿@model KinoAfishaDP.Models.UserComment
+@{
+    List<KinoAfishaDP.Models.Comment> lables = ViewBag.User_Comments_List_ForThisFilm;
+    var grid = new WebGrid(source: lables, rowsPerPage: 5);
+    
+}
+
+
+
+<h1>Залиште ваш коментар:</h1>
+@using (Html.BeginForm("Create", "UserComments"))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UserComment</legend>
+
+        <label>
+            @Html.TextBoxFor(model => model.LabelText, new { @placeholder = "Повідомлення" })
+            @Html.ValidationMessageFor(model => model.LabelText)
+        </label>
+
+        <label>
+            @Html.TextBoxFor(model => model.E_mail, new { @placeholder = "E-mail" })
+            @Html.ValidationMessageFor(model => model.E_mail)
+        </label>
+
+        <label>
+            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Ім'я" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </label>
+
+        @* <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>*@
+
+        <p>
+            <input type="submit" value="Create" id="but" />
+        </p>
+    </fieldset>
+}
+
+
+<h4>Відгуків: @ViewBag.Count </h4>
+<ul id="lists" class="feedback">
+    @foreach (var v in lables)
+    {
+        <li>
+            <div class="feedback-info">
+
+
+                <div class="feedback-photo">
+                   <img width="150" height="120" src="@v.User_Photo"  />
+                </div>
+                <div  class="feedback-name" >
+                    @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
+                    {
+                        string link1 = "/UserComments/Index?name=" + @v.User_Name;
+                        string link2 = "&id=" + @v.FilmId;
+                        string link = link1 + link2;
+                        <a href=@link>@v.User_Name</a>
+                    }
+                    else
+                    {
+                        <p>@v.User_Name</p>
+                    }
+
+                </div>
+                <div class="feedback-date">
+                    <time datetime="2015-10-10">@v.Date</time>
+                </div>
+            </div>
+            <div class="feedback-text">
+                <p>@v.User_LabelText</p>
+            </div>
+        </li>
+    }
+    
+     @*@grid.GetHtml(
+   
+    columns: grid.Columns(
+    
+    grid.Column(columnName: "User_Name"),
+    grid.Column(columnName: "User_LabelText",header:"Повідомлення",canSort:false),
+    grid.Column(columnName: "Date", header:"Дата")
+      
+    )
+)*@
+</ul>

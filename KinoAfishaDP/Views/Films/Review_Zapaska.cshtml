@@ -1,0 +1,176 @@
+﻿@model KinoAfishaDP.Models.Review
+@{
+    Layout = null;
+    AjaxOptions options = new AjaxOptions()
+    {
+        UpdateTargetId = "tabledata",
+        Url = Url.Action("Review", "Films"),
+        HttpMethod = "POST"
+
+    };
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Review1</title>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <!-- owl styles -->
+    <script src="~/Content/OwlCarousel/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="~/Content/OwlCarousel/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/OwlCarousel/owl.theme.default.css" />
+    <script>
+        $(document).ready(function () {
+            $("#carousel").owlCarousel({
+                autoplay: true,
+                autoplayTimeout: 3500,
+                items: 3,
+                loop: true,
+                margin: 10,
+                nav: true,
+                //responsive: {
+                //    0: {
+                //        items: 1
+                //    },
+                //    600: {
+                //        items: 3
+                //    },
+                //    1000: {
+                //        items: 5
+                //    }
+                //}
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>Review</h2>
+
+    @*@Html.Display("FilmName_Review")
+<br />
+
+@Html.Display("FilmLength_Review")
+<br />
+@Html.DisplayFor(model => Model.FilmActors_Review)
+<br />
+@Html.DisplayTextFor(model => Model.FilmActors_Review)
+
+@Html.DisplayForModel()
+
+    @Html.Action("LabelView", "Films", new { num = Model.FilmId_Review }); *@
+    @{var tr = "https://www.youtube.com/results?search_query=" + Model.FilmName_Review;}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Назва фільму
+                </th>
+                <th>Тривалість фільму
+                </th>
+                <th>Жанр
+                </th>
+                <th>Зірковий склад
+                </th>
+                <th>Опис
+                </th>
+                <th>Опис
+                </th>
+                <th>Опис
+                </th>
+                @*<th>Кадри із фільму
+        </th>*@
+
+            </tr>
+        </thead>
+
+        <tbody >
+            <tr>
+                <td>
+                    <a href=@tr target="_blank" title="Глянути відео в YOUTube">@Html.DisplayFor(model => Model.FilmName_Review) </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => Model.FilmLength_Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => Model.FilmGenre_Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => Model.FilmActors_Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => Model.FilmReview_Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => Model.Plus_Review)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => Model.Minus_Review)
+                </td>
+
+                @*        <td>
+           
+        </td>*@
+
+            </tr>
+        </tbody>
+
+    </table>
+    <div id="tabledata">
+       @Html.Action("_Review","Films")
+
+    </div>
+    <div id="carousel" class="owl-carousel owl-theme">
+        <img src="@Model.FilmPictures_Review.Split(',')[0]" width="300" height="250" alt ="Pictures"/>
+        <img src="@Model.FilmPictures_Review.Split(',')[1]" width="300" height="250" alt ="Pictures"/>
+        <img src="@Model.FilmPictures_Review.Split(',')[2]" width="300" height="250" alt ="Pictures"/>
+        <img src="@Model.FilmPictures_Review.Split(',')[3]" width="300" height="250" alt ="Pictures"/>
+        <img src="@Model.FilmPictures_Review.Split(',')[4]" width="300" height="250" alt ="Pictures"/>
+    </div>
+    
+
+    @using (Ajax.BeginForm(options))
+    {
+            
+            
+        <button name="action" value="add">Подобається</button>
+        <button name="action" value="minus">Неподобається</button>
+            
+    }
+
+
+    @section OwlScript{
+        <script src="~/Content/OwlCarousel/jquery-1.9.1.min.js"></script>
+        <script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#carousel").owlCarousel({
+                    autoplay: true,
+                    autoplayTimeout: 3500,
+                    items: 3,
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    //responsive: {
+                    //    0: {
+                    //        items: 1
+                    //    },
+                    //    600: {
+                    //        items: 3
+                    //    },
+                    //    1000: {
+                    //        items: 5
+                    //    }
+                    //}
+                })
+            })
+        </script>
+    }
+    @Html.Action("LabelView", "Films", new { num = Model.FilmId_Review })
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model KinoAfishaDP.Models.Film
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Film</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmLength)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmLength)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmGenre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmGenre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmActors)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmActors)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilmPictures)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilmPictures)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FilmId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

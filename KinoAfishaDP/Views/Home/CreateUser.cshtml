@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateUser</h2>
+
+@using (Html.BeginForm("CreateUser", "Home"))
+{
+    <label>Name</label>@Html.TextBox("NameOfUser") <br />
+    @Html.ValidationMessage("NameOfUser")<br />
+    <label>Password</label>@Html.TextBox("PasOfUser") <br />
+    <label>Role</label>@Html.DropDownList("ListOfUser",
+                                          new SelectList(new[] {"Admin","Moderator"}))<br />
+    <input type ="submit",value="Register User"/>
+}

@@ -1,0 +1,99 @@
+﻿@model KinoAfishaDP.Models.Film
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Film</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmName)
+            @Html.ValidationMessageFor(model => model.FilmName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmRating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmRating)
+            @Html.ValidationMessageFor(model => model.FilmRating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmCountry)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmCountry)
+            @Html.ValidationMessageFor(model => model.FilmCountry)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmAge)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmAge)
+            @Html.ValidationMessageFor(model => model.FilmAge)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmLength)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmLength)
+            @Html.ValidationMessageFor(model => model.FilmLength)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmGenre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmGenre)
+            @Html.ValidationMessageFor(model => model.FilmGenre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmActors)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmActors)
+            @Html.ValidationMessageFor(model => model.FilmActors)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmReview)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmReview)
+            @Html.ValidationMessageFor(model => model.FilmReview)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmPictures)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FilmPictures)
+            @Html.ValidationMessageFor(model => model.FilmPictures)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

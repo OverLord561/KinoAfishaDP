@@ -1,0 +1,36 @@
+﻿@model KinoAfishaDP.Models.Session
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Session</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SessionTimePokaz)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SessionTimePokaz)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Film.FilmName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Film.FilmName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieHouse.MovieHouseName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieHouse.MovieHouseName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SessionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
