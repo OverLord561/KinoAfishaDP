@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KinoAfishaDP.Models.UserPhoto>
+﻿@model IEnumerable<KinoAfishaDP.Models.Profile>
 
 @{
     ViewBag.Title = "Index";
@@ -6,9 +6,9 @@
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 @using (@Html.BeginForm())
 {
      <label>Ім'я користувача</label> @Html.TextBox("name")<br />  
@@ -18,25 +18,34 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.NAME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Photo)
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHOTO)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model) 
+{
+    string mail = "mailto:"+item.EMAIL;
+    string link = "UserPhotoes/Index?nickname=" + item.NAME.ToString();
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserName)
+            <a href="@link">@Html.DisplayFor(modelItem => item.NAME)</a>
         </td>
         <td>
-           <img width=200 height=150 src=@Html.DisplayFor(modelItem => item.Photo) alt=@item.UserName>
+           <a href=@mail>@item.EMAIL</a>
         </td>
         <td>
-           | @Html.ActionLink("Edit", "Edit", new { id=item.UserPhotoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserPhotoId }) |
+           <img width=200 height=150 src=@Html.DisplayFor(modelItem => item.PHOTO) alt=@item.NAME>
+        </td>
+        <td>
+           |@Html.ActionLink("Edit", "Edit", new { id=item.ProfileID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProfileID }) |
          
         </td>
     </tr>

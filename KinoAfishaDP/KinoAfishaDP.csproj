@@ -182,6 +182,7 @@
     <Compile Include="Models\CustomComment.cs" />
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\MovieHouse.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\UserComment.cs" />

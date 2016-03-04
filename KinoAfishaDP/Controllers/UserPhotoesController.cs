@@ -16,9 +16,19 @@ namespace KinoAfishaDP.Controllers
         //
         // GET: /UserPhotoes/
         [Authorize(Roles = "Admin, Moderator")]
-        public ActionResult Index()
+        public ActionResult Index( string nickname,int? id)
         {
-            return View(db.UserPhotoes.ToList());
+            var prof = nickname !=null ? db.UserPhotoes.Where(x => x.UserName.Contains(nickname) ) : db.UserPhotoes;
+            var profile = prof.Join(db.UserComments,
+                x=>x.UserName,
+                c=>c.UserNickName,
+                (x,c)=> new Profile{
+                NAME=x.UserName,
+                PHOTO=x.Photo,
+                EMAIL=c.E_mail,
+                ProfileID=x.UserPhotoId});
+
+            return View(profile.Distinct().ToList());
         }
         [HttpPost]
         [Authorize(Roles = "Admin, Moderator")]
