@@ -32,12 +32,12 @@
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Photo)
+           <img width=200 height=150 src=@Html.DisplayFor(modelItem => item.Photo) alt=@item.UserName>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserPhotoId }) |
+           | @Html.ActionLink("Edit", "Edit", new { id=item.UserPhotoId }) |
             @Html.ActionLink("Details", "Details", new { id=item.UserPhotoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserPhotoId })
+         
         </td>
     </tr>
 }

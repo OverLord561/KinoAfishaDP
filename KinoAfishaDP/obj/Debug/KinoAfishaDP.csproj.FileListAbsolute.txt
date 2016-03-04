@@ -57,3 +57,4 @@ D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\Microsoft.Web.WebPages.OAuth.
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\WebMatrix.WebData.resources.dll
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.dll
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.pdb
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.csprojResolveAssemblyReference.cache

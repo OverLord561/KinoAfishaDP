@@ -207,7 +207,9 @@ namespace KinoAfishaDP.Controllers
 
             else
             {
-
+                UserPhoto userprofile = new UserPhoto { UserPhotoId = 1, UserName = NameOfUser, Photo = "" };
+                db.UserPhotoes.Add(userprofile);
+                db.SaveChanges();
                 membership.CreateUserAndAccount(NameOfUser, PasOfUser); // создание пользователя
                 roles.AddUsersToRoles(new[] { NameOfUser }, new[] { ListOfUser }); // установка роли для пользователя
             }
@@ -220,17 +222,36 @@ namespace KinoAfishaDP.Controllers
             var user = userprofile.UserProfiles.ToList();
             SimpleRoleProvider roles = (SimpleRoleProvider)Roles.Provider;
             SimpleMembershipProvider membership = (SimpleMembershipProvider)Membership.Provider;
-
+            
             UserProfile profile = userprofile.UserProfiles.Find(id);
+            
             if (profile == null)
             {
                 return View(user);
             }
             else
             {
+
+                UserPhoto userphoto = db.UserPhotoes.FirstOrDefault(x => x.UserName == profile.UserName);
+
                var roole = roles.GetRolesForUser(profile.UserName);
                roles.RemoveUsersFromRoles(new[]{profile.UserName}, roole);
                 membership.DeleteUser(profile.UserName, true);
+
+
+              
+                db.UserPhotoes.Remove(userphoto);
+                db.SaveChanges();
+
+                var autorised = Request.IsAuthenticated ? User.Identity.Name : "nothing";
+                if (autorised == profile.UserName)
+                {
+                    WebSecurity.Logout();
+                }
+
+               
+
+                TempData["_UserRole"] = "Prosto";
                 return RedirectToAction("DeleteUser");
             }
 

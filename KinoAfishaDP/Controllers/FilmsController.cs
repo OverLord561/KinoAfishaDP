@@ -224,7 +224,7 @@ namespace KinoAfishaDP.Controllers
         }
     [HttpPost]
         [Authorize]
-        public ActionResult Review(int? numv,string action)
+        public ActionResult Review(int? numv, string action, string returnUrl)
         {
 
             if (TempData.Peek("da"+ TempData.Peek("num_of_film") as string) as string == null)
@@ -240,7 +240,10 @@ namespace KinoAfishaDP.Controllers
 
             if (res == "DA")
             {
-                return Content("<h1> Ви уже голосували </h1>");
+                //return Content("<h1> Ви уже голосували </h1>");
+                var num = HttpContext.Request.Cookies["num_of_film"].Value; ;
+                ViewBag.Golos = "Ви уже голосували!";
+                return RedirectToAction("Review", "Films", new{ num=num});
             }
             else
             {
@@ -286,8 +289,7 @@ namespace KinoAfishaDP.Controllers
             }
         }
 
-  
-
+   
         public ActionResult LabelView(int num)
         {
             //creates partial label view

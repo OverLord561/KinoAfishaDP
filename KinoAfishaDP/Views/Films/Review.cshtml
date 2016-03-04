@@ -97,10 +97,11 @@
     <br />
 
 </div>
+@if (ViewBag.Golos != null) { <h2>@ViewBag.Golos</h2> }
 @using (@Html.BeginForm("Review", "Films"))
 {
             
-    <button name="action" value="add">Подобається</button>
+    <button name="action" value="add">Подобається</button>  
     <button name="action" value="minus">Неподобається</button>            
 }
 
