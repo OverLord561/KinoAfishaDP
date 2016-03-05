@@ -35,7 +35,19 @@ namespace KinoAfishaDP.Controllers
         public ActionResult Index(string name)
         {
             var photoes =name!=""? db.UserPhotoes.Where(x=>x.UserName.ToUpper().Contains(name.ToUpper())):db.UserPhotoes;
-            return View(photoes);
+            var profile = photoes.Join(db.UserComments,
+               x => x.UserName,
+               c => c.UserNickName,
+               (x, c) => new Profile
+               {
+                   NAME = x.UserName,
+                   PHOTO = x.Photo,
+                   EMAIL = c.E_mail,
+                   ProfileID = x.UserPhotoId
+               });
+
+            return View(profile.Distinct().ToList());
+           
         }
         //
         // GET: /UserPhotoes/Details/5
