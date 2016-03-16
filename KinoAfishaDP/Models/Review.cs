@@ -10,7 +10,7 @@ namespace KinoAfishaDP.Models
         public int FilmId_Review { get; set; }
         public string FilmName_Review { get; set; }
 
-        public string FilmRating_Review { get; set; }
+        public double FilmRating_Review { get; set; }
         public string FilmCountry_Review { get; set; }
         public string FilmAge_Review { get; set; }
         

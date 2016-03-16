@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Review";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
 
 }
 @section scripts
@@ -31,16 +32,31 @@
             }
         }
     </script>
+   
 }
 
 
 
 @section Owl
     {
-    <!-- owl styles -->
-    <link rel="stylesheet" href="~/Content/OwlCarousel/owl.carousel.css">
-    <link rel="stylesheet" href="~/Content/OwlCarousel/owl.theme.default.css" />
+
+     <script src="~/Content/OwlCarousel/jquery-1.9.1.min.js"></script>
+    @*<script src="~/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>*@
+    <link href="~/Content/src/rateit.css" rel="stylesheet" type="text/css">
+    <script src="~/Content/src/jquery.rateit.min.js" type="text/javascript"></script>
+    <script src="~/Content/src/jquery.rateit.min.js.map" type="text/javascript"></script>
+
+
+<!-- owl styles -->
+<link rel="stylesheet" href="~/Content/OwlCarousel/owl.carousel.css">
+<link rel="stylesheet" href="~/Content/OwlCarousel/owl.theme.default.css" />
+ 
+  
+    <script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
+
 }
+
+
 <h2>Review</h2>
 
 
@@ -50,6 +66,8 @@
         <th>Назва фільму
         </th>
         <th>Тривалість фільму
+        </th>
+         <th>Рейтинг
         </th>
         <th>Жанр
         </th>
@@ -63,10 +81,13 @@
     </tr>
     <tr>
         <td>
-            <a href=@tr target="_blank" title="Глянути відео в YOUTube">@Html.DisplayFor(model => Model.FilmName_Review) </a>
+            <a href="@tr" target="_blank" title="Глянути відео в YOUTube">@Html.DisplayFor(model => Model.FilmName_Review) </a>
         </td>
         <td>
             @Html.DisplayFor(model => Model.FilmLength_Review)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.FilmRating_Review)
         </td>
         <td>
             @Html.DisplayFor(model => Model.FilmGenre_Review)
@@ -90,6 +111,46 @@
     <img src="@Model.FilmPictures_Review.Split(',')[3]" width="300" height="250" alt ="Pictures"/>
     <img src="@Model.FilmPictures_Review.Split(',')[4]" width="300" height="250" alt ="Pictures"/>
 </div>
+
+<div id="products">
+    Дайте свою оцінку:
+                        <div data-productid="@Model.FilmId_Review" class="rateit">
+                            @*    <div data-productid="653" class="rateit">*@
+                        </div>
+</div>
+
+
+@section Golos
+    {
+     <script type="text/javascript">
+         //we bind only to the rateit controls within the products div
+         $('#products .rateit').bind('rated reset', function (e) {
+             var ri = $(this);
+
+             //if the use pressed reset, it will get value: 0 (to be compatible with the HTML range control), we could check if e.type == 'reset', and then set the value to  null .
+             var value = ri.rateit('value');
+             var productID = ri.data('productid'); // if the product id was in some hidden field: ri.closest('li').find('input[name="productid"]').val()
+
+             //maybe we want to disable voting?
+             ri.rateit('readonly', true);
+
+             $.ajax({
+                 url: '/Films/Review', //your server side script
+                 data: { id: productID, value: value }, //our data
+                 type: 'POST',
+                 success: function reload() {
+                     document.location.reload();
+                     alert("Дякуємо,за ваш  голос");
+                    
+
+                 }
+             });
+         });
+
+</script>
+
+    }
+
 <div id="baran">
     @Model.Plus_Review
     <br />
@@ -97,7 +158,8 @@
     <br />
 
 </div>
-@if (ViewBag.Golos != null) { <h2>@ViewBag.Golos</h2> }
+@if (ViewBag.Golos != null)
+{ <h2>@ViewBag.Golos</h2> }
 @using (@Html.BeginForm("Review", "Films"))
 {
             
@@ -106,6 +168,7 @@
 }
 
 <h3>Поділись фільмом з друзями:</h3>
+
 <script type="text/javascript">(function () {
     if (window.pluso) if (typeof window.pluso.start == "function") return;
     if (window.ifpluso == undefined) {
@@ -117,10 +180,8 @@
         h.appendChild(s);
     }
 })();</script>
-<div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,counter,theme=01" data-services="vkontakte,facebook,twitter,google,print"></div>@section OwlScript{
-    <script src="~/Content/OwlCarousel/jquery-1.9.1.min.js"></script>
-    <script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
-
+<div class="pluso" data-background="#ebebeb" data-options="medium,square,line,horizontal,counter,theme=04" data-services="vkontakte,facebook,twitter,google,email,print"></div>
+@section OwlScript{
     <script>
         $(document).ready(function () {
             $("#carousel").owlCarousel({

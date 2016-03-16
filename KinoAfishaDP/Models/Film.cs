@@ -14,7 +14,7 @@ namespace KinoAfishaDP.Models
         public string FilmName { get; set; }
 
         [Required(ErrorMessage = "Вкажіть рейтинг")]
-        public string FilmRating { get; set; }
+        public double FilmRating { get; set; }
 
         [Required(ErrorMessage = "Вкажіть країну походження")]
         public string FilmCountry { get; set; }

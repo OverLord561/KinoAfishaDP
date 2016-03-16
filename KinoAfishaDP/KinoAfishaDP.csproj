@@ -176,6 +176,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603021707042_InitialCreate.cs" />
+    <Compile Include="Migrations\201603021707042_InitialCreate.Designer.cs">
+      <DependentUpon>201603021707042_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603160856405_Initial.cs" />
+    <Compile Include="Migrations\201603160856405_Initial.Designer.cs">
+      <DependentUpon>201603160856405_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603160907150_Initial1.cs" />
+    <Compile Include="Migrations\201603160907150_Initial1.Designer.cs">
+      <DependentUpon>201603160907150_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AFISHAContext.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -190,6 +203,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\src\delete.gif" />
+    <Content Include="Content\src\jquery.rateit.js" />
+    <Content Include="Content\src\jquery.rateit.min.js" />
+    <Content Include="Content\src\rateit.css" />
+    <Content Include="Content\src\star.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -246,9 +264,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\src\jquery.rateit.min.js.map" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.rateit.js" />
+    <Content Include="Scripts\jquery.rateit.min.js" />
+    <Content Include="Scripts\jquery.rateit.min.js.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
@@ -335,12 +357,24 @@
     <Content Include="Views\Home\Cabinet.cshtml" />
     <Content Include="Views\Home\CreateUser.cshtml" />
     <Content Include="Views\Home\ModeratorPanel.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603021707042_InitialCreate.resx">
+      <DependentUpon>201603021707042_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603160856405_Initial.resx">
+      <DependentUpon>201603160856405_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603160907150_Initial1.resx">
+      <DependentUpon>201603160907150_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

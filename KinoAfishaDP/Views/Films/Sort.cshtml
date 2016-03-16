@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<KinoAfishaDP.Models.Film>
 
+
 <table>
     <tr>
         @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
@@ -44,6 +45,7 @@
 
     @foreach (var item in Model)
     {
+        
         string link = "Films/Review?num=" + @item.FilmId.ToString();
         string way = "/Content/Images/" + item.FilmName + ".png";
         string toSession = "/Sessions/Index?NameOfFilm=" + @item.FilmName;

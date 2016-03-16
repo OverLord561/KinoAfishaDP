@@ -57,4 +57,7 @@ D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\Microsoft.Web.WebPages.OAuth.
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\WebMatrix.WebData.resources.dll
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.dll
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.pdb
-D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.csprojResolveAssemblyReference.cache
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.InitialCreate.resources
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.csproj.GenerateResource.Cache
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.Initial.resources
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.Initial1.resources

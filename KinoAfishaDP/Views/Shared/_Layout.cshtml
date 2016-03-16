@@ -5,16 +5,31 @@
 
     @Scripts.Render("~/bundles/jquery")
 
+
+
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
     @if (IsSectionDefined("Owl"))
     {
-        @RenderSection("Owl") 
+ @RenderSection("Owl") 
     }
 
     @if (IsSectionDefined("Commentstyle"))
     {
-        @RenderSection("Commentstyle") 
+ @RenderSection("Commentstyle") 
     }
-@*Відповідає за таймпікер*@
+
+
+    <script type="text/javascript" src="~/Content/js/script.js"></script>
+    
+
+    @*Відповідає за таймпікер*@
     <link rel="stylesheet" type="text/css" href="~/Content/js/jquery.datetimepicker.css" />
     <style type="text/css">
         .custom-date-style
@@ -33,24 +48,16 @@
     </style>
     @*Відповідає за таймпікер*@
 
-    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-    <script type="text/javascript" src="~/Content/js/script.js"></script>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
-
 </head>
+
 <body>
-    <header >
+    <header>
 
-             <div class="content-wrapper">
-        @*Створю якорь*@
-        <span id="top"></span>
+        <div class="content-wrapper">
+            @* Створю якорь*@
+            <span id="top"></span>
 
-   
+
             <div class="float-left">
                 <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
             </div>
@@ -84,20 +91,26 @@
             </div>
         </div>
     </footer>
+    @if (IsSectionDefined("Golos"))
+    {
+        @RenderSection("Golos") 
+    }
 
     @RenderSection("scripts", required: false)
-    
+
     <p style="margin-left: 0px;" id="back-top"><a href="#top"><span></span>Наверх</a></p>
+
+
 </body>
 
 @if (IsSectionDefined("Picker"))
 {
     @RenderSection("Picker") 
 }
-
 @if (IsSectionDefined("OwlScript"))
 {
     @RenderSection("OwlScript") 
 }
+
 
 </html>

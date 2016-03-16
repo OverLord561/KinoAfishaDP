@@ -121,7 +121,7 @@ namespace KinoAfishaDP.Controllers
             {
                 db.Films.Add(film);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(film);
@@ -151,7 +151,7 @@ namespace KinoAfishaDP.Controllers
             {
                 db.Entry(film).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             return View(film);
         }
@@ -179,7 +179,7 @@ namespace KinoAfishaDP.Controllers
             Film film = db.Films.Find(id);
             db.Films.Remove(film);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         //вывод рецензии
@@ -222,10 +222,37 @@ namespace KinoAfishaDP.Controllers
             
             
         }
-    [HttpPost]
-        [Authorize]
-        public ActionResult Review(int? numv, string action, string returnUrl)
+
+
+        [HttpPost]
+        public ActionResult Index2(int? id, double? value)
         {
+
+            HttpContext.Response.Cookies["id"].Value = id.ToString();
+            HttpContext.Response.Cookies["value"].Value = value.ToString();
+
+            return View();
+
+        }
+
+
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Review(int? numv, string action, string returnUrl, int? id, string value)
+        {
+
+
+           
+            Film reiting = db.Films.Find(id);
+
+            reiting.FilmRating = (  (reiting.FilmRating + Convert.ToDouble(value))/ 2);
+            db.Entry(reiting).State = EntityState.Modified;
+            db.SaveChanges();
+
+            //HttpContext.Response.Cookies["id"].Value = id.ToString();
+            //HttpContext.Response.Cookies["value"].Value = value.ToString();
+
 
             if (TempData.Peek("da"+ TempData.Peek("num_of_film") as string) as string == null)
             {
@@ -248,16 +275,16 @@ namespace KinoAfishaDP.Controllers
             else
             {
                 int num = Convert.ToInt32(TempData.Peek("num_of_film") as string);
-                Film reiting = db.Films.Find(num);
+                Film reitingg = db.Films.Find(num);
                 switch (action)
                 {
-                    case "add": { reiting.FilmPlus++; } break;
-                    case "minus": { reiting.FilmMinus++; } break;
+                    case "add": { reitingg.FilmPlus++; } break;
+                    case "minus": { reitingg.FilmMinus++; } break;
 
                     default: ViewBag.Result = "ERRor"; break;
                 }
 
-                db.Entry(reiting).State = EntityState.Modified;
+                db.Entry(reitingg).State = EntityState.Modified;
                 db.SaveChanges();
                 //COOKIES
                 HttpContext.Response.Cookies["coment" + TempData.Peek("num_of_film") as string].Value = "DA";
