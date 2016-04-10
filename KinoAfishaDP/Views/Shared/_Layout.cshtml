@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ua">
 <head>
     <meta charset="utf-8" />
 
@@ -11,10 +11,11 @@
 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-
+     
     @Styles.Render("~/Content/css")
+   <link rel="stylesheet" href="~/Content/bootstrap.min.css"/>
     @Scripts.Render("~/bundles/modernizr")
-
+   
     @if (IsSectionDefined("Owl"))
     {
  @RenderSection("Owl") 
@@ -56,11 +57,14 @@
         <div class="content-wrapper">
             @* Створю якорь*@
             <span id="top"></span>
-
-
+           
             <div class="float-left">
-                <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                <a title="Кіно афіша ДП" href="/Home/Index">
+                    <img src="~/Images/logo.jpg" width="150px">
+                </a>
             </div>
+
+
             <div class="float-right">
                 <section id="login">
                     @Html.Partial("_LoginPartial")
@@ -68,11 +72,15 @@
                 <nav>
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Сеанси", "Index", "Sessions")</li>
+                        <li>@Html.ActionLink("Кінотеатри", "Index", "MovieHouses")</li>
                         <li>@Html.ActionLink("Cabinet", "Cabinet", "Home")</li>
-                        <li>@Html.ActionLink("Admin Panel", "AdminPanel", "Home")</li>
-                        <li>@Html.ActionLink("Moderator Panel", "ModeratorPanel", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                       
+                            <li>@Html.ActionLink("Admin Panel", "AdminPanel", "Home")</li>
+                       
+                       
+                            <li>@Html.ActionLink("Moderator Panel", "ModeratorPanel", "Home")</li>
+                       
                     </ul>
                 </nav>
             </div>

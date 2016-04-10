@@ -78,9 +78,14 @@ mark {
 
 .float-left {
     float: left;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 .float-right {
+    display: inline-block;
+    margin-right: 25px;
     float: right;
 }
 
@@ -135,7 +140,7 @@ h5, h6 {
 #body {
     background-color: #efeeef;
     clear: both;
-    padding-bottom: 35px;
+    padding-bottom: 5px;
 }
 
     .main-content {
@@ -197,13 +202,17 @@ footer {
 }
 
     #login a {
-        background-color: #d3dce0;
+        
         margin-left: 10px;
         margin-right: 3px;
         padding: 2px 3px;
         text-decoration: none;
     }
-
+     #login form a {
+        border: solid 1px;
+        border-color: #93c0c4;
+        
+    }
     #login a.username {
         background: none;
         margin: 0;
@@ -223,6 +232,9 @@ footer {
 
 /* menu
 ----------------------------------------------------------*/
+nav {
+    margin-top: 25px;
+}
 ul#menu {
     font-size: 1.3em;
     font-weight: 600;
@@ -243,11 +255,13 @@ ul#menu {
             text-decoration: none;
         }
 
-        ul#menu li a:hover {
-            color: #333;
-            text-decoration: none;
-        }
+#menu > li > a:hover{
+    border-bottom: solid 3px;
+    padding-bottom: 12px;
+    border-bottom-color: #93c0c4;
+    color:  #93c0c4;
 
+}
 
 /* page elements
 ----------------------------------------------------------*/
@@ -352,6 +366,39 @@ ol.round {
         }
 
 /* content */
+
+#tabledata {
+        margin-top: 20px;
+    }
+.infoLine {
+    margin-top: 10px;
+
+}
+.infoFilm {
+    
+    border-radius: 5px;
+    background-color: #fff;
+    margin-top: 10px;
+    padding:5px;
+
+}
+.filmSeparator {
+    margin-top: -2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 2px solid;
+    border-bottom: 1px solid;
+    border-color: #93c0c4;
+    
+}
+.toSession {
+    background-color: #d3dce0;
+    padding: 2px;
+    border: solid 2px;
+    border-color: #93c0c4;
+    color: #787878;
+}
+
 article {
     float: left;
     width: 70%;
@@ -377,6 +424,8 @@ aside {
 }
 
 /* login page */
+
+
 #loginForm {
     border-right: solid 2px #c8c8c8;
     float: left;
@@ -479,7 +528,7 @@ input, textarea {
     font-size: 1.2em;
     margin: 5px 0 6px 0;
     padding: 5px;
-    width: 300px;
+    width: auto;
 }
 
 textarea {
@@ -501,11 +550,11 @@ textarea {
     input[type="button"],
     button {
         background-color: #d3dce0;
-        border: 1px solid #787878;
+        border: 1px solid #93c4c0;
         cursor: pointer;
-        font-size: 1.2em;
+        font-size: 1em;
         font-weight: 600;
-        padding: 7px;
+        padding: 5px;
         margin-right: 8px;
         width: auto;
     }
@@ -633,6 +682,120 @@ td {
 tr.pager td {
     padding: 0 0.25em 0 0;
 }
+/*Films*/
+#form0 {
+        margin-top: -10px;
+}
+.btnSearch {
+    padding: 5px;
+    font-size: 13px;
+    margin-left: 22px;
+    border-color: #93c0c4;
+}
+.btnInTime {
+        margin-top: 10px;
+
+}
+.btnInTime a:hover{
+       text-decoration: none;
+}
+/*Кынотеатри*/
+
+
+.movieHouseInfo {
+    
+    margin-left: 25px;
+    height: 120px;
+}
+
+.leftPosition {
+    margin-left: 40px;
+}
+.searchWay button {
+    margin: 10px;
+}
+/*dropdown*/
+.dropbtn {
+    background-color: #787878;
+    color: white;
+    padding: 10px;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-top:20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: -16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #d3dce0;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 2px 6px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #7ac0da;
+}
+/*Коментарі */
+#lists {
+    list-style: none;
+    padding: 0;
+}
+.coment {
+    margin-bottom: 10px;
+}
+.shareFilm {
+    float: right;
+    margin-top: -100px;
+}
+.feedback-text {
+    padding: 5px;
+    margin-left: -30px;
+ 
+}
+#lists li{
+    border: solid 2px;
+    border-color: #a6dbed;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #d3dce0;
+}
+
+.filmReview {
+    background-color: #efeeef;
+    margin: 0 0 20px 0;
+    padding: 10px 5px 0 5px;
+    font-size: 16px;
+}
+#products {
+    position: relative;
+    top: 10px;
+    font-size: large;
+}
+.filmTable td {
+    padding: 7px;
+    font-size: large;
+}
 
 
 /********************
@@ -680,13 +843,14 @@ tr.pager td {
             padding: 0;
         }
 
-        #login a:hover {
-            color: #333;
-        }
+            #login a:hover {
+                color: #333;
+            }
 
     /* menu */
     nav {
         margin-bottom: 5px;
+        
     }
 
     ul#menu {
@@ -723,6 +887,11 @@ tr.pager td {
         width: 100%;
     }
 
+    /*search block*/
+
+
+
+
     /* ordered list */
     ol.round {
         list-style-type: none;
@@ -747,12 +916,12 @@ tr.pager td {
                 background: none;
             }
 
-     /* features */
-     section.feature {
+    /* features */
+    section.feature {
         float: none;
         padding: 10px;
         width: auto;
-     }
+    }
 
         section.feature img {
             color: #999;
@@ -801,4 +970,8 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+
+    .FilmGenre {
+        float: right;
+    }
 }

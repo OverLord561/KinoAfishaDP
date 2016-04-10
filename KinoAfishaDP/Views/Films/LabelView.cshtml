@@ -7,7 +7,7 @@
 
 
 
-<h1>Залиште ваш коментар:</h1>
+<h4>Залиште ваш коментар:</h4>
 @using (Html.BeginForm("Create", "UserComments"))
 {
     @Html.ValidationSummary(true)
@@ -15,20 +15,20 @@
     <fieldset>
         <legend>UserComment</legend>
 
-        <label>
+        <div class="coment">
             @Html.TextBoxFor(model => model.LabelText, new { @placeholder = "Повідомлення" })
             @Html.ValidationMessageFor(model => model.LabelText)
-        </label>
-
-        <label>
+        </div>
+        
+        <div class="coment">
             @Html.TextBoxFor(model => model.E_mail, new { @placeholder = "E-mail" })
             @Html.ValidationMessageFor(model => model.E_mail)
-        </label>
+        </div>
 
-        <label>
+        <div class="coment">
             @Html.TextBoxFor(model => model.Name, new { @placeholder = "Ім'я" })
             @Html.ValidationMessageFor(model => model.Name)
-        </label>
+        </div>
 
         @* <div class="editor-label">
             @Html.LabelFor(model => model.Date)
@@ -37,10 +37,11 @@
             @Html.EditorFor(model => model.Date)
             @Html.ValidationMessageFor(model => model.Date)
         </div>*@
-
+        <div class="coment">
         <p>
             <input type="submit" value="Create" id="but" />
         </p>
+            </div>
     </fieldset>
 }
 
@@ -49,14 +50,16 @@
 <ul id="lists" class="feedback">
     @foreach (var v in lables)
     {
-        <li>
-            <div class="feedback-info">
+        <li class="listComent">
+            <div class="row">
 
 
-                <div class="feedback-photo">
-                   <img width="150" height="120" src="@v.User_Photo"  />
+                <div class="col-lg-2">
+                   <img width="120" height="100" src="@v.User_Photo"  />
                 </div>
-                <div  class="feedback-name" >
+                <div class="col-lg-10">
+                <div class="row">
+                <div  class="col-lg-9 feedback-name" >
                     @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
                     {
                         string link1 = "/UserComments/Index?name=" + @v.User_Name;
@@ -66,16 +69,18 @@
                     }
                     else
                     {
-                        <p>@v.User_Name</p>
+                        @v.User_Name
                     }
 
                 </div>
-                <div class="feedback-date">
+                <div class="col-lg-3 feedback-date">
                     <time datetime="2015-10-10">@v.Date</time>
                 </div>
             </div>
             <div class="feedback-text">
                 <p>@v.User_LabelText</p>
+            </div>
+               </div>     
             </div>
         </li>
     }

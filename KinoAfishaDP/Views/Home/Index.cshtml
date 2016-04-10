@@ -6,12 +6,7 @@
         <div class="content-wrapper">
            
          
-            <h2>
-                @ViewBag.AdminMessage
-            </h2>
-                <h3>
-                    @Html.ActionLink("Сеанси", "Index", "Sessions")| @Html.ActionLink("Кінотеатри", "Index", "MovieHouses")
-                </h3>
+         
             @Html.Action("Index","Films")
             
         </div>

@@ -174,14 +174,7 @@ namespace KinoAfishaDP.Controllers
             var MovieHouses = db.MovieHouses.ToList(); ;
             var UserComments = db.UserComments.ToList();
 
-            switch (list1)
-            {
-                case "Films": return RedirectToAction("Index", "Films");
-                case "Sessions": return RedirectToAction("Index", "Sessions");
-                case "MovieHouses": return RedirectToAction("Index", "MovieHouses");
-                case "UserComments": return RedirectToAction("Index", "UserComments");
-                default: return View("Index");
-            }
+          
 
             return View();
         }

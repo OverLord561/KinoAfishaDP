@@ -10,16 +10,20 @@ namespace KinoAfishaDP.Models
     {
         public int MovieHouseId { get; set; }
 
+        public string MovieHouseImage { get; set; }
+
         [Required(ErrorMessage = "Вкажіть назву кінотеатру")]
         public string MovieHouseName { get; set; }
 
         [Required(ErrorMessage = "Вкажіть телефонний номер кінотеатру")]
+        [Display(Name="Телефон")]
         [RegularExpression(@"[0-9]{3}-[0-9]{3}-[0-9]{4}", ErrorMessage = "Телефонний номер номер має відповідати формату (xxx)-(xxx)-(xxxx)")]
         public string MovieHouseTelephone { get; set; }
 
         [Required(ErrorMessage = "Вкажіть адрес кінотеатру")]
         public string MovieHouseAdress { get; set; }
 
+        [Display(Name = "Рейтинг")]
         [Required(ErrorMessage = "Вкажіть рейтинг кінотеатру")]
         public double MovieHouseRating { get; set; }
 

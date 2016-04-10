@@ -61,63 +61,45 @@
 
 
 @{var tr = "https://www.youtube.com/results?search_query=" + Model.FilmName_Review;}
-<table border="1">
-    <tr>
-        <th>Назва фільму
-        </th>
-        <th>Тривалість фільму
-        </th>
-         <th>Рейтинг
-        </th>
-        <th>Жанр
-        </th>
-        <th>Зірковий склад
-        </th>
-        <th>Опис
-        </th>
-        @*<th>Кадри із фільму
-        </th>*@
-
-    </tr>
-    <tr>
-        <td>
-            <a href="@tr" target="_blank" title="Глянути відео в YOUTube">@Html.DisplayFor(model => Model.FilmName_Review) </a>
-        </td>
-        <td>
-            @Html.DisplayFor(model => Model.FilmLength_Review)
-        </td>
-        <td>
-            @Html.DisplayFor(model => Model.FilmRating_Review)
-        </td>
-        <td>
-            @Html.DisplayFor(model => Model.FilmGenre_Review)
-        </td>
-        <td>
-            @Html.DisplayFor(model => Model.FilmActors_Review)
-        </td>
-        <td>
-            @Html.DisplayFor(model => Model.FilmReview_Review)
-        </td>
-
-
-    </tr>
-
-
-</table>
-<div id="carousel" class="owl-carousel owl-theme">
-    <img src="@Model.FilmPictures_Review.Split(',')[0]" width="300" height="250" alt ="Pictures"/>
-    <img src="@Model.FilmPictures_Review.Split(',')[1]" width="300" height="250" alt ="Pictures"/>
-    <img src="@Model.FilmPictures_Review.Split(',')[2]" width="300" height="250" alt ="Pictures"/>
-    <img src="@Model.FilmPictures_Review.Split(',')[3]" width="300" height="250" alt ="Pictures"/>
-    <img src="@Model.FilmPictures_Review.Split(',')[4]" width="300" height="250" alt ="Pictures"/>
-</div>
-
-<div id="products">
-    Дайте свою оцінку:
+            
+        <div class="row gradient">
+            
+            <div class="col-lg-4">
+        <img src="@Model.FilmPictures_Review.Split(',')[0]" width="300" height="250" alt ="Pictures"/>
+            </div>
+            <div class="col-lg-8">
+                <h3> <a href="@tr" target="_blank" title="Глянути відео в YOUTube">
+                    @Html.DisplayFor(model => Model.FilmName_Review) </a></h3>
+                <table class="filmTable">
+                <tr><td>фільму:</td>  <td> @Html.DisplayFor(model => Model.FilmLength_Review)</td></tr>
+                
+                <tr><td>Рейтинг:</td> <td> @Html.DisplayFor(model => Model.FilmRating_Review)
+                <tr><td>Жанр:</td>   <td>  @Html.DisplayFor(model => Model.FilmGenre_Review)</tr>
+                <tr><td>Зірковий склад:</td>   <td> @Html.DisplayFor(model => Model.FilmActors_Review)</tr>
+                </table>
+                <div id="products">
+                    Дайте свою оцінку:
                         <div data-productid="@Model.FilmId_Review" class="rateit">
                             @*    <div data-productid="653" class="rateit">*@
                         </div>
+                </div>
+                
+            </div>
+       
+        
+
+            </div>
+            <div class="filmReview">Опис:     @Html.DisplayFor(model => Model.FilmReview_Review)</div>
+
+<div id="carousel" class="owl-carousel owl-theme hightOfCarousel">
+    <img src="@Model.FilmPictures_Review.Split(',')[0]" width="200" height="150" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[1]" width="200" height="150" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[2]" width="200" height="150" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[3]" width="200" height="150" alt ="Pictures"/>
+    <img src="@Model.FilmPictures_Review.Split(',')[4]" width="200" height="150" alt ="Pictures"/>
 </div>
+
+
 
 
 @section Golos
@@ -152,22 +134,22 @@
     }
 
 <div id="baran">
-    @Model.Plus_Review
+   <span class="glyphicon glyphicon-thumbs-up"></span> @Model.Plus_Review
     <br />
-    @Model.Minus_Review
+     <span class="glyphicon glyphicon-thumbs-down"></span> @Model.Minus_Review
     <br />
 
 </div>
-@if (ViewBag.Golos != null)
-{ <h2>@ViewBag.Golos</h2> }
+@if ((TempData.Peek("Golos") as string) != null)
+{ <h2>@(TempData["Golos"] as string)</h2> }
 @using (@Html.BeginForm("Review", "Films"))
 {
             
     <button name="action" value="add">Подобається</button>  
     <button name="action" value="minus">Неподобається</button>            
 }
-
-<h3>Поділись фільмом з друзями:</h3>
+<div class="shareFilm">
+<h4>Поділись фільмом з друзями:</h4>
 
 <script type="text/javascript">(function () {
     if (window.pluso) if (typeof window.pluso.start == "function") return;
@@ -181,13 +163,14 @@
     }
 })();</script>
 <div class="pluso" data-background="#ebebeb" data-options="medium,square,line,horizontal,counter,theme=04" data-services="vkontakte,facebook,twitter,google,email,print"></div>
+</div>
 @section OwlScript{
     <script>
         $(document).ready(function () {
             $("#carousel").owlCarousel({
                 autoplay: true,
                 autoplayTimeout: 3500,
-                items: 3,
+                items: 4,
                 loop: true,
                 margin: 10,
                 nav: true,

@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -165,7 +168,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
+    <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExampleLayoutsController.cs" />
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieHousesController.cs" />
@@ -188,12 +194,17 @@
     <Compile Include="Migrations\201603160907150_Initial1.Designer.cs">
       <DependentUpon>201603160907150_Initial1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604101029047_asd.cs" />
+    <Compile Include="Migrations\201604101029047_asd.Designer.cs">
+      <DependentUpon>201604101029047_asd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AFISHAContext.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CustomComment.cs" />
     <Compile Include="Models\Film.cs" />
+    <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Models\MovieHouse.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Review.cs" />
@@ -203,6 +214,50 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\DeadPool1.png" />
+    <Content Include="Content\Images\DeadPool2.png" />
+    <Content Include="Content\Images\DeadPool3.png" />
+    <Content Include="Content\Images\DeadPool4.png" />
+    <Content Include="Content\Images\DeadPool5.png" />
+    <Content Include="Content\Images\glyphicons-halflings-white.png" />
+    <Content Include="Content\Images\glyphicons-halflings.png" />
+    <Content Include="Content\Images\inot.jpg" />
+    <Content Include="Content\Images\INOT.png" />
+    <Content Include="Content\Images\Rating\Киностанция.PNG" />
+    <Content Include="Content\Images\Rating\Красногвардеец.PNG" />
+    <Content Include="Content\Images\Rating\Материк.PNG" />
+    <Content Include="Content\Images\Rating\Мост Кино.PNG" />
+    <Content Include="Content\Images\Rating\Мультиплекс.PNG" />
+    <Content Include="Content\Images\Rating\Правда-кино.PNG" />
+    <Content Include="Content\Images\Rating\Сич.PNG" />
+    <Content Include="Content\Images\Star Wars.png" />
+    <Content Include="Content\Images\StarWars1.png" />
+    <Content Include="Content\Images\StarWars2.png" />
+    <Content Include="Content\Images\StarWars3.png" />
+    <Content Include="Content\Images\StarWars4.png" />
+    <Content Include="Content\Images\StarWars5.png" />
+    <Content Include="Content\Images\UP.jpg" />
+    <Content Include="Content\Images\Uploads\2c9d3518-ade5-48e7-bb1e-6dbc95fd3354.jpg" />
+    <Content Include="Content\Images\Uploads\76f68fe9-ed3a-4e1c-b4a5-6ca57fdd4e56.jpg" />
+    <Content Include="Content\Images\Uploads\b04b3c36-c30a-45dc-b85e-dbd014c2e097.jpg" />
+    <Content Include="Content\Images\Uploads\c56edcfe-3575-4613-ba04-b7dd559deb98.jpg" />
+    <Content Include="Content\Images\Uploads\c6f5fa11-634d-4a8d-8350-1adc5beb8eb5.jpg" />
+    <Content Include="Content\Images\Uploads\c871ff2a-6501-4442-a94c-fe670b832d2d.png" />
+    <Content Include="Content\Images\Uploads\d4a9762f-0237-4c67-bd1e-e9ff4c081834.jpg" />
+    <Content Include="Content\Images\Uploads\e38d1d34-3a13-4be0-a5a5-6c5500745a6a.png" />
+    <Content Include="Content\Images\ДедПул.png" />
+    <Content Include="Content\Images\Эверест.png" />
+    <Content Include="Content\Images\Эверест1.png" />
+    <Content Include="Content\Images\Эверест2.png" />
+    <Content Include="Content\Images\Эверест3.png" />
+    <Content Include="Content\Images\Эверест4.png" />
+    <Content Include="Content\Images\Эверест5.png" />
     <Content Include="Content\src\delete.gif" />
     <Content Include="Content\src\jquery.rateit.js" />
     <Content Include="Content\src\jquery.rateit.min.js" />
@@ -265,12 +320,27 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\src\jquery.rateit.min.js.map" />
-    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.7.1.js" />
-    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
     <Content Include="Scripts\jquery.rateit.js" />
     <Content Include="Scripts\jquery.rateit.min.js" />
     <Content Include="Scripts\jquery.rateit.min.js.map" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
@@ -374,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603160907150_Initial1.resx">
       <DependentUpon>201603160907150_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604101029047_asd.resx">
+      <DependentUpon>201604101029047_asd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

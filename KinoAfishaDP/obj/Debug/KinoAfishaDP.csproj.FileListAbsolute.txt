@@ -61,3 +61,15 @@ D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.In
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.csproj.GenerateResource.Cache
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.Initial.resources
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.Initial1.resources
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\System.Net.Http.Formatting.dll
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\System.Web.Http.dll
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\System.Web.Http.WebHost.dll
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\System.Net.Http.Formatting.xml
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\System.Web.Http.xml
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\System.Web.Http.WebHost.xml
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\System.Net.Http.Formatting.resources.dll
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\System.Web.Http.resources.dll
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\System.Web.Http.WebHost.resources.dll
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.asd.resources
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\Microsoft.Web.Mvc.dll
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.csprojResolveAssemblyReference.cache

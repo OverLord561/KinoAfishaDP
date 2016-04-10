@@ -17,8 +17,9 @@
     </section>
 }*@
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<html lang="ua" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
+     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Google Maps API v3 - Getting Started</title>
     <link href="../css/default.css" rel="stylesheet" />
@@ -27,7 +28,7 @@
     <!-- ---------- include api with params ------------- -->
     <script type="text/javascript"
         src="http://maps.google.com/maps/api/js?sensor=true">
-                   @*Your key. Tham khảo tại: http://dev.vast.vn/tuananh/Web/C%C4%90077#chuong5*@
+                   @*Your key. Tham kh?o t?i: http://dev.vast.vn/tuananh/Web/C%C4%90077#chuong5*@
     </script>
 
     <script lang="ja">
@@ -49,22 +50,22 @@
 
             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-            // Настраиваем красный маркер, который будет использоваться для центральной точки
+            // ??????????? ??????? ??????, ??????? ????? ?????????????? ??? ??????????? ?????
             var myLatlng = new google.maps.LatLng(48.460861, 35.056737);
 
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
-                title: 'ВИ тут'
+                title: '?? ???'
             });
-            // Берем для маркера иконку с сайта google
+            // ????? ??? ??????? ?????? ? ????? google
             marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
 
 
 
-            // Получаем данные
+            // ???????? ??????
             $.getJSON('@Url.Action("GetData", "MovieHouses")', function (data) {
-                // Проходим по всем данным и устанавливаем для них маркеры
+                // ???????? ?? ???? ?????? ? ????????????? ??? ??? ???????
 
 
 
@@ -80,25 +81,25 @@
                     });
 
 
-                    // Берем для этих маркеров синие иконки с сайта google
+                    // ????? ??? ???? ???????? ????? ?????? ? ????? google
                     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
 
 
 
-                    var contentString = "<div class='stationInfo'><h2>Кінотеатр " + item.MovieHouseName
-                               + "</h2><div><h4>Рейтинг: " + item.MovieHouseRating
+                    var contentString = "<div class='stationInfo'><h2>????????? " + item.MovieHouseName
+                               + "</h2><div><h4>???????: " + item.MovieHouseRating
                                + "</h4></div>"
                     + "<div><img src=" + item.MovieHouseStars + " width='140' height='25'/>"
 
-                    // Для каждого объекта добавляем доп. информацию, выводимую в отдельном окне
+                    // ??? ??????? ??????? ????????? ???. ??????????, ????????? ? ????????? ????
                     var infowindow = new google.maps.InfoWindow({
-                        //content: "<div class='stationInfo'><h2>Станция " + item.PlaceName + "</h2><div><h4>Линия метро: "
-                        //    + item.Line + "</h4></div><div><h4>Пассажиропоток: " + item.Traffic + " млн. человек</h4></div></div>"
+                        //content: "<div class='stationInfo'><h2>??????? " + item.PlaceName + "</h2><div><h4>????? ?????: "
+                        //    + item.Line + "</h4></div><div><h4>??????????????: " + item.Traffic + " ???. ???????</h4></div></div>"
 
                         content: contentString
                     });
 
-                    // обработчик нажатия на маркер объекта
+                    // ?????????? ??????? ?? ?????? ???????
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.open(map, marker);
 
@@ -172,7 +173,51 @@
             </p>
         }
 
-        <table id="tabledata">
+        
+
+
+
+
+            @foreach (var item in Model)
+            {
+                string link = "MovieHouses/Index?name=" + @item.MovieHouseName.ToString();
+                 <div class="row">
+                <div class="movieHouseImage col-lg-2">@Html.DisplayFor(modelItem => item.MovieHouseImage)</div>
+                
+                <div class="movieHouseInfo col-lg-7">
+                    <h4><a href=@link>@Html.DisplayFor(modelItem => item.MovieHouseName)</a></h4>
+                    <span class="glyphicon glyphicon-earphone"></span>@Html.DisplayNameFor(model => model.MovieHouseTelephone):
+                        @Html.DisplayFor(modelItem => item.MovieHouseTelephone)
+                    <span class="leftPosition glyphicon glyphicon-star">
+                        @Html.DisplayNameFor(model => model.MovieHouseRating):
+                        @Html.DisplayFor(modelItem => item.MovieHouseRating)</span><br />
+                    @Html.DisplayFor(modelItem => item.MovieHouseAdress)
+                    <br />
+
+                </div>
+                     <div class="col-lg-2">
+                         @if (TempData.Peek("_UserRole") as string == "Admin")
+                         {
+                             <div class="dropdown">
+                                 <button class="dropbtn">Редагувати</button>
+                                 <div class="dropdown-content">
+                                     @Html.ActionLink("Edit", "Edit", new { id = item.MovieHouseId })
+                                     @Html.ActionLink("Details", "Details", new { id = item.MovieHouseId })
+                                     @Html.ActionLink("Delete", "Delete", new { id = item.MovieHouseId })
+                                 </div>
+                             </div>   
+                                
+                         }
+                     </div>
+                 </div>     
+            }
+
+
+
+
+
+       
+        @*<table id="tabledata">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.MovieHouseName)
@@ -199,11 +244,11 @@
                     @Html.DisplayNameFor(model => model.MovieHouseStars)
                 </th>
                 <th></th>
-            </tr>
+            </tr>*@
 
-            @foreach (var item in Model)
+           @*@foreach (var item in Model)
             {
-                string link = "MovieHouses/Index?name=" + @item.MovieHouseName.ToString();
+                //string link = "MovieHouses/Index?name=" + @item.MovieHouseName.ToString();
                 <tr>
                     <td>
                         <a href=@link>@Html.DisplayFor(modelItem => item.MovieHouseName)</a>
@@ -244,11 +289,11 @@
                 </tr>
             }
 
-
-        </table>
+            
+        </table>*@
 
     </div>
-    <div>
+    <div class="searchWay">
         <label>Звідки:</label><input type="text" id="start" name="start" value="Академія митної служби України" />
         <label>Куди:</label><input type="text" id="end" name="end" value="Академія митної служби України" />
         <label>Оберіть транспорт:</label>
@@ -260,8 +305,8 @@
         </select>
         <button onclick="javascript: calcRoute();">Прокласти маршрут</button>
     </div>
-    <div id="map_canvas" style="float: left; width: 650px; height: 700px;"></div>
-    <div id="directionsPanel" style="float: left; width: 650px; height: 500px; overflow: auto;"></div>
+    <div id="map_canvas" style="width: 650px; height: 700px; margin-left: 13%"></div>
+    <div id="directionsPanel" style=" width: 650px; height: 500px; overflow: auto;"></div>
 </body>
 </html>
 

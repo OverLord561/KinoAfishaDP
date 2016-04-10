@@ -242,80 +242,88 @@ namespace KinoAfishaDP.Controllers
         public ActionResult Review(int? numv, string action, string returnUrl, int? id, string value)
         {
 
-
-           
-            Film reiting = db.Films.Find(id);
-
-            reiting.FilmRating = (  (reiting.FilmRating + Convert.ToDouble(value))/ 2);
-            db.Entry(reiting).State = EntityState.Modified;
-            db.SaveChanges();
-
-            //HttpContext.Response.Cookies["id"].Value = id.ToString();
-            //HttpContext.Response.Cookies["value"].Value = value.ToString();
-
-
-            if (TempData.Peek("da"+ TempData.Peek("num_of_film") as string) as string == null)
+            if (id != null)
             {
-                HttpContext.Response.Cookies["coment"+TempData.Peek("num_of_film") as string].Value = "NO";
+
+                Film reiting = db.Films.Find(id);
+
+                reiting.FilmRating = ((reiting.FilmRating + Convert.ToDouble(value)) / 2);
+                db.Entry(reiting).State = EntityState.Modified;
+                db.SaveChanges();
+                int num = Convert.ToInt32(HttpContext.Request.Cookies["num_of_film"].Value);
+
+                return RedirectToAction("Review", "Films", new { num = num });
             }
+
             else
             {
-                HttpContext.Response.Cookies["coment" + TempData.Peek("num_of_film") as string].Value = "DA";
-            }
-
-            string res = HttpContext.Request.Cookies["coment"+ TempData.Peek("num_of_film") as string].Value;
-
-            if (res == "DA")
-            {
-                //return Content("<h1> Ви уже голосували </h1>");
-                var num = HttpContext.Request.Cookies["num_of_film"].Value; ;
-                ViewBag.Golos = "Ви уже голосували!";
-                return RedirectToAction("Review", "Films", new{ num=num});
-            }
-            else
-            {
-                int num = Convert.ToInt32(TempData.Peek("num_of_film") as string);
-                Film reitingg = db.Films.Find(num);
-                switch (action)
+                
+                if (TempData.Peek("da" + TempData.Peek("num_of_film") as string) as string == null)
                 {
-                    case "add": { reitingg.FilmPlus++; } break;
-                    case "minus": { reitingg.FilmMinus++; } break;
-
-                    default: ViewBag.Result = "ERRor"; break;
+                    HttpContext.Response.Cookies["coment" + TempData.Peek("num_of_film") as string].Value = "NO";
+                }
+                else
+                {
+                    HttpContext.Response.Cookies["coment" + TempData.Peek("num_of_film") as string].Value = "DA";
                 }
 
-                db.Entry(reitingg).State = EntityState.Modified;
-                db.SaveChanges();
-                //COOKIES
-                HttpContext.Response.Cookies["coment" + TempData.Peek("num_of_film") as string].Value = "DA";
-                TempData["da"+TempData.Peek("num_of_film") as string] = "DA";
+                string res = HttpContext.Request.Cookies["coment" + TempData.Peek("num_of_film") as string].Value;
 
-                int addressId = num;
-
-                var review = db.Films.Where(s => s.FilmId == addressId).Select(n => new Review
+                if (res == "DA")
                 {
+                    //return Content("<h1> Ви уже голосували </h1>");
+                    var num = HttpContext.Request.Cookies["num_of_film"].Value;
+                    HttpContext.Response.Cookies["Golos"].Value = "Ви уже голосували!";
 
-                    FilmName_Review = n.FilmName,
-                    FilmGenre_Review = n.FilmGenre,
-                    FilmActors_Review = n.FilmActors,
-                    FilmId_Review = n.FilmId,
-                    FilmLength_Review = n.FilmLength,
-                    FilmReview_Review = n.FilmReview,
-                    FilmPictures_Review = n.FilmPictures,
-                    FilmAge_Review = n.FilmAge,
-                    FilmCountry_Review = n.FilmCountry,
-                    FilmRating_Review = n.FilmRating,
-                    Plus_Review = n.FilmPlus,
-                    Minus_Review = n.FilmMinus
 
-                }).ToList()[0];
-                            
+                    TempData["Golos"] = HttpContext.Request.Cookies["Golos"].Value;
+                   
+                    return RedirectToAction("Review", "Films", new { num = num });
+                }
+                else
+                {
+                    int num = Convert.ToInt32(TempData.Peek("num_of_film") as string);
+                    Film reitingg = db.Films.Find(num);
+                    switch (action)
+                    {
+                        case "add": { reitingg.FilmPlus++; } break;
+                        case "minus": { reitingg.FilmMinus++; } break;
 
-                return View(review);
+                        default: ViewBag.Result = "ERRor"; break;
+                    }
 
+                    db.Entry(reitingg).State = EntityState.Modified;
+                    db.SaveChanges();
+                    //COOKIES
+                    HttpContext.Response.Cookies["coment" + TempData.Peek("num_of_film") as string].Value = "DA";
+                    TempData["da" + TempData.Peek("num_of_film") as string] = "DA";
+
+                    int addressId = num;
+
+                    var review = db.Films.Where(s => s.FilmId == addressId).Select(n => new Review
+                    {
+
+                        FilmName_Review = n.FilmName,
+                        FilmGenre_Review = n.FilmGenre,
+                        FilmActors_Review = n.FilmActors,
+                        FilmId_Review = n.FilmId,
+                        FilmLength_Review = n.FilmLength,
+                        FilmReview_Review = n.FilmReview,
+                        FilmPictures_Review = n.FilmPictures,
+                        FilmAge_Review = n.FilmAge,
+                        FilmCountry_Review = n.FilmCountry,
+                        FilmRating_Review = n.FilmRating,
+                        Plus_Review = n.FilmPlus,
+                        Minus_Review = n.FilmMinus
+
+                    }).ToList()[0];
+
+
+                    return View(review);
+
+                }
             }
         }
-
    
         public ActionResult LabelView(int num)
         {

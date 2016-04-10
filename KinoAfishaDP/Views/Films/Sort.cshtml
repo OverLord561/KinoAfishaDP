@@ -1,47 +1,7 @@
 ﻿@model IEnumerable<KinoAfishaDP.Models.Film>
 
 
-<table>
-    <tr>
-        @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
-        {
-            <th>
-                @Html.DisplayNameFor(model => model.FilmId)
-            </th>
-        }
-        <th>
-            @Html.Display("Назва")   
-        </th>
-        <th>
-            @Html.Display("Тривалість")
-        </th>
-        <th>
-            @Html.Display("Рейтинг")
-        </th>
-        <th>
-            @Html.Display("Країна")
-        </th>
-        <th>
-            @Html.Display("Рік випуску")
-        </th>
-        <th>
-            @Html.Display("Жанр")
-        </th>
-        <th>
-            @Html.Display("Зірковий склад")
-        </th>
-        <th>
-            @Html.Display("Про фільм")
-        </th>
 
-        @*<th>
-            @Html.DisplayNameFor(model => model.FilmPictures)
-        </th>*@
-
-
-
-        @*<th></th>*@
-    </tr>
 
     @foreach (var item in Model)
     {
@@ -49,63 +9,77 @@
         string link = "Films/Review?num=" + @item.FilmId.ToString();
         string way = "/Content/Images/" + item.FilmName + ".png";
         string toSession = "/Sessions/Index?NameOfFilm=" + @item.FilmName;
-        <tr>
+        
+        <div class="row filmSeparator">
+             <div class="col-lg-3">
             @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
         {
-            <td>
-                @Html.DisplayFor(model => item.FilmId)
-            </td>
+           
+                @Html.DisplayFor(model => item.FilmId);
+            
         }
-            <td>
 
-                <a title="Переглянути детальну інформацію" href=@link>@*@Html.DisplayFor(modelItem => item.FilmName)*@
-                    <img src="@way" alt=@item.FilmName>
+            
+
+                <a title="Переглянути детальну інформацію" href="@link">
+                    <img src="@way"  width="150px" height ="200px" alt=@item.FilmName>
                 </a>
-                <a title="Переглянути сеанси" href=@toSession>Встигаємо
-                    
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmLength)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmCountry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmAge)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmGenre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmActors)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilmReview)
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.FilmPictures)
-            </td>*@
-           @* <td>
+            
+           
+                
+                </div>
+            <div class="col-lg-8">
+                <div class="row infoLine">
+                    <div class="col-lg-4">
+                        @Html.DisplayFor(modelItem => item.FilmName)
+                    </div>
+                    <div class="col-lg-4">
+                        @Html.DisplayFor(modelItem => item.FilmAge)
+                    </div>
+                    <div class="col-lg-4">
+                        <span>Рейтинг:</span>
+                    </div>
+                </div>
+                <div class="row infoLine">
+                    <div class="col-lg-4">
+                    @Html.DisplayFor(modelItem => item.FilmCountry)
+                    </div>
+                    <div class="col-lg-4">
+                    @Html.DisplayFor(modelItem => item.FilmGenre)
+                        </div>
+                    <div class="col-lg-4">
+                        <span class="glyphicon glyphicon-star"></span>
+                        @Html.DisplayFor(modelItem => item.FilmRating)
+                        </div>
+
+                </div>
 
 
-                <img src="@item.FilmPictures.Split(',')[0]" width="200" height="140" alt ="Pictures"/>
-                <img src="@item.FilmPictures.Split(',')[1]" width="200" height="140" alt ="Pictures"/>
+                <div class="row infoFilm">
 
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.FilmReview)
 
-            <td>
+                </div>
+                <div class="btnInTime">
+                <a class="toSession" title="Переглянути сеанси" href=@toSession>Встигаємо</a>
+                 </div>
+                </div>
+                 <div class="col-lg-1">
                 @if (TempData.Peek("_UserRole") as string == "Admin")
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.FilmId })<br /> 
-                    @Html.ActionLink("Details", "Details", new { id = item.FilmId }) <br />
-                    @Html.ActionLink("Delete", "Delete", new { id = item.FilmId })<br />
+                   <div class="dropdown">
+                                 <button class="dropbtn">Редагувати</button>
+                                 <div class="dropdown-content">
+                                     @Html.ActionLink("Edit", "Edit", new { id = item.FilmId })
+                                     @Html.ActionLink("Details", "Details", new { id = item.FilmId })
+                                     @Html.ActionLink("Delete", "Delete", new { id = item.FilmId })
+                                 </div>
+                             </div>   
                 }
-            </td>
-        </tr>
+                        
+                </div>
+                
+      </div>       
     }
 
-</table>
+   

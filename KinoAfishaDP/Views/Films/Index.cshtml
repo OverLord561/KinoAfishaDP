@@ -20,43 +20,58 @@
     <meta name="viewport" content="width=device-width" />
     <title>Home</title>
     <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-     <link href="~/Content/Site.css" rel="stylesheet">
+    
+    
+    <link href="~/Content/Site.css" rel="stylesheet">
+      <link rel="stylesheet" href="~/Content/bootstrap.min.css"/>
 
 </head>
 <body>
   
         <div>
             @using (Ajax.BeginForm(options))
-            {         
-                <div>
-                    <label>Назва</label>
-                    @Html.DropDownList("FilmName", String.Empty)
-                    <br />
-                    <label>Країна</label>
-                    @Html.DropDownList("FilmCountry", String.Empty)
+            {        
+ 
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Назва</label>
+                        @Html.DropDownList("FilmName",String.Empty )
+                    </div>
+                    <div class="col-lg-3 col-lg-offset-1">
+                        <label>Країна</label>
+                        @Html.DropDownList("FilmCountry", String.Empty)
+                        @* @Html.DropDownList("FilmCountry", "Усі країни")*@
+                    </div>
+                    <div class="col-lg-3 col-lg-offset-2">
+                        <div class="FilmGenre">
+                            <label>Жанр</label>
+                            @Html.DropDownList("FilmGenre", String.Empty)
+                        </div>
+                    </div>
 
-                    <label>Дата Виходу</label>
-                    @Html.TextBox("data")
-                    <br />
-                    <label>Жанр</label>
-                    @Html.DropDownList("FilmGenre", String.Empty)
-                    <br />
-                    <label>Акторський склад</label>
-                    @Html.TextBox("actor")
-                    <br />
-
+                </div> 
+                 <div class="row">
+                      <div class="col-lg-2">
+                   @* <label>Дата виходу</label>*@
+                    @Html.TextBox("data",null, new { @placeholder = "Рік виходу" })
+                          </div> 
+                   <div class="col-lg-2 col-lg-offset-2 ">
+                    @*<label>Акторський склад</label>*@
+                    @Html.TextBox("actor",null, new { @placeholder = "Акторський склад" })
+                       </div> 
+                     <div class="col-lg-2 col-lg-offset-3">
+                     <input class="btnSearch" type="submit" name="operation" value="Шукати прем'єру" /> <br />
+                         </div> 
                 </div>
-                <p>
-                    <input type="submit" name="operation" value="Sort" />
-                </p>
+               
           
    
             }
             @if (TempData.Peek("_UserRole") as string == "Admin")
             {
-                <p>
+                <span class="toSession">
                     @Html.ActionLink("Create new", "Create")
-                </p> 
+                </span> 
             }
 @* Аякс запрос вставлятиме дані в ось це місце*@
             <div id="tabledata">
@@ -67,5 +82,5 @@
         @section scripts {
             <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
         }
-   
+  </body> 
 </html>
