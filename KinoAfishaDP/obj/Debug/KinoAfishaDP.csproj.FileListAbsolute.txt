@@ -73,3 +73,4 @@ D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\ru\System.Web.Http.WebHost.resou
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.Migrations.asd.resources
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\Microsoft.Web.Mvc.dll
 D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\obj\Debug\KinoAfishaDP.csprojResolveAssemblyReference.cache
+D:\1\Диплом\KinoAfishaDP\KinoAfishaDP\bin\KinoAfishaDP.dll.config

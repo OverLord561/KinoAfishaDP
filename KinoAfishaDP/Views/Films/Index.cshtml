@@ -27,55 +27,52 @@
 
 </head>
 <body>
-  
-        <div>
-            @using (Ajax.BeginForm(options))
-            {        
- 
-                <div class="row">
-                    <div class="col-lg-3">
-                        <label>Назва</label>
-                        @Html.DropDownList("FilmName",String.Empty )
-                    </div>
-                    <div class="col-lg-3 col-lg-offset-1">
-                        <label>Країна</label>
-                        @Html.DropDownList("FilmCountry", String.Empty)
-                        @* @Html.DropDownList("FilmCountry", "Усі країни")*@
-                    </div>
-                    <div class="col-lg-3 col-lg-offset-2">
-                        <div class="FilmGenre">
-                            <label>Жанр</label>
-                            @Html.DropDownList("FilmGenre", String.Empty)
-                        </div>
-                    </div>
-
-                </div> 
-                 <div class="row">
-                      <div class="col-lg-2">
-                   @* <label>Дата виходу</label>*@
-                    @Html.TextBox("data",null, new { @placeholder = "Рік виходу" })
-                          </div> 
-                   <div class="col-lg-2 col-lg-offset-2 ">
-                    @*<label>Акторський склад</label>*@
-                    @Html.TextBox("actor",null, new { @placeholder = "Акторський склад" })
-                       </div> 
-                     <div class="col-lg-2 col-lg-offset-3">
-                     <input class="btnSearch" type="submit" name="operation" value="Шукати прем'єру" /> <br />
-                         </div> 
-                </div>
-               
-          
-   
-            }
-            @if (TempData.Peek("_UserRole") as string == "Admin")
+    @if (TempData.Peek("_UserRole") as string == "Admin")
             {
-                <span class="toSession">
-                    @Html.ActionLink("Create new", "Create")
-                </span> 
-            }
-@* Аякс запрос вставлятиме дані в ось це місце*@
-            <div id="tabledata">
+        <span class="btnFilm">
+            @Html.ActionLink("Create new", "Create")
+        </span>
+    }
+        <div class="row">
+
+            @* Аякс запрос вставлятиме дані в ось це місце*@
+            <div class="col-lg-9" id="tabledata">
                 @Html.Action("Sort")
+            </div>
+
+            <!--Search fixed panel-->
+            <div class="col-lg-3">
+            @using (Ajax.BeginForm(options))
+            {
+                    <div class="row searchPanel">
+                        <div class="searcHeader">Пошук</div>
+                        <!--Search label-->
+                        <div class="col-lg-4">
+                            <label>Назва</label>
+                            <label>Жанр</label>
+                            <label>Країна</label>
+                        </div>
+                        <!--Search select-->
+                        <div class="col-lg-4">
+                            @Html.DropDownList("FilmName", String.Empty)
+                            @Html.DropDownList("FilmGenre", String.Empty)
+                            @Html.DropDownList("FilmCountry", String.Empty)
+                            @* @Html.DropDownList("FilmCountry", "Усі країни")*@
+                        </div>
+            
+                            @* <label>Дата виходу</label>*@
+                            @Html.TextBox("data", null, new { @placeholder = "Рік виходу" })
+
+                            @*<label>Акторський склад</label>*@
+                            @Html.TextBox("actor", null, new { @placeholder = "Акторський склад" })
+
+                            <input class="btn btn-default" type="submit" name="operation" value="Шукати прем'єру" /> <br />
+                        </div>
+
+
+
+                }
+               
             </div>
 
         </div>

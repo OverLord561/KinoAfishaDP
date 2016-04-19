@@ -63,6 +63,7 @@ a {
 
     a:hover {
         background-color: #c7d1d6;
+        
     }
 
 header, footer, hgroup,
@@ -82,7 +83,9 @@ mark {
     margin-bottom: 10px;
     margin-left: 10px;
 }
-
+    .float-left img {
+        margin-left: -4px;
+    }
 .float-right {
     display: inline-block;
     margin-right: 25px;
@@ -365,39 +368,7 @@ ol.round {
             background: url("../Images/orderedList9.png") no-repeat;
         }
 
-/* content */
 
-#tabledata {
-        margin-top: 20px;
-    }
-.infoLine {
-    margin-top: 10px;
-
-}
-.infoFilm {
-    
-    border-radius: 5px;
-    background-color: #fff;
-    margin-top: 10px;
-    padding:5px;
-
-}
-.filmSeparator {
-    margin-top: -2px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 2px solid;
-    border-bottom: 1px solid;
-    border-color: #93c0c4;
-    
-}
-.toSession {
-    background-color: #d3dce0;
-    padding: 2px;
-    border: solid 2px;
-    border-color: #93c0c4;
-    color: #787878;
-}
 
 article {
     float: left;
@@ -549,8 +520,7 @@ textarea {
     input[type="submit"],
     input[type="button"],
     button {
-        background-color: #d3dce0;
-        border: 1px solid #93c4c0;
+        background-color: #93c4c0;
         cursor: pointer;
         font-size: 1em;
         font-weight: 600;
@@ -627,7 +597,7 @@ input[type="checkbox"].input-validation-error {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-    margin-top: 0.75em;
+    margin-top: 2em;
     border: 0 none;
 }
 
@@ -636,6 +606,7 @@ th {
     text-align: left;
     border: none 0px;
     padding-left: 0;
+    margin-bottom: 1em;
 }
 
     th a {
@@ -675,12 +646,52 @@ th {
     }
 
 td {
-    padding: 0.25em 2em 0.25em 0em;
+    padding: 0.25em 5em 0.25em 0em;
     border: 0 none;
 }
-
-tr.pager td {
+tr{
+   
+    margin-top: 20px;
+}
+/*tr.pager td {
     padding: 0 0.25em 0 0;
+}*/
+
+/*--------My style----------*/
+
+/* content */
+
+#tabledata {
+        margin-top: 20px;
+    }
+.infoLine {
+    margin-top: 10px;
+
+}
+.infoFilm {
+    
+    border-radius: 5px;
+    background-color: #fff;
+    margin-top: 10px;
+    padding:5px;
+
+}
+.filmSeparator {
+    margin-top: -2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 2px solid;
+    border-bottom: 1px solid;
+    border-color: #93c0c4;
+    
+}
+.toSession {
+    background-color: #93c0c4;
+    padding: 5px;
+    color: #787878;
+}
+.toSession a:hover{
+    text-decoration: none;
 }
 /*Films*/
 #form0 {
@@ -691,29 +702,76 @@ tr.pager td {
     font-size: 13px;
     margin-left: 22px;
     border-color: #93c0c4;
+  
 }
-.btnInTime {
-        margin-top: 10px;
-
-}
-.btnInTime a:hover{
-       text-decoration: none;
-}
-/*Кынотеатри*/
-
-
-.movieHouseInfo {
     
-    margin-left: 25px;
-    height: 120px;
+.btnFilm {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 13px;
+    margin-left: 22px;
+    background-color: #93c0c4;
+    width: 90px;
+    font-weight: 600;
+ 
+}
+.btnFilm a:hover {
+        text-decoration: none;
 }
 
-.leftPosition {
-    margin-left: 40px;
+.btnFilm:hover {
+        border: none;
+        background-color: #c7d1d6;
 }
-.searchWay button {
-    margin: 10px;
+/*search panel films*/
+.searcHeader {
+    background-color: #93c4c0;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 4px 0 2px 10px;
+    color: #333;
 }
+.searchPanel{
+    margin-top: 28px; 
+    /*position: absolute;
+    top: 18px;
+    left: 35px;*/
+    min-width: 225px;
+    max-width: 300px;
+    background-color: #d3dce0;
+}
+    .searchPanel select{
+        margin-top: 5px;
+        max-width: 150px;
+    }
+
+    .searchPanel input[type=submit]{
+        margin: 8px 0 8px 45px;
+    }
+    .searchPanel input[type=submit]:hover{
+        background-color: #c7d1d6;
+    }
+    .searchPanel input[type=text]{
+        width: 95%;
+        margin-left: 5px;
+        margin-top: 5px;
+        height: 25px;
+    }
+    .searchPanel section {
+        padding-left: 10px;
+    }
+    .searchPanel section input[type=text]{
+            float: right;
+            margin-right: 10px;
+            width: 80%;
+        }
+    .searchPanel section label {
+        margin-top: 7px;
+    }
+      .searchPanel section input[type=submit]{
+        padding: 10px;
+    }
+        
 /*dropdown*/
 .dropbtn {
     background-color: #787878;
@@ -756,6 +814,22 @@ tr.pager td {
 .dropdown:hover .dropbtn {
     background-color: #7ac0da;
 }
+
+/*Кынотеатри*/
+
+
+.movieHouseInfo {
+    
+    margin-left: 25px;
+    height: 120px;
+}
+
+.leftPosition {
+    margin-left: 40px;
+}
+.searchWay button {
+    margin: 10px;
+}
 /*Коментарі */
 #lists {
     list-style: none;
@@ -796,6 +870,7 @@ tr.pager td {
     padding: 7px;
     font-size: large;
 }
+
 
 
 /********************
@@ -971,7 +1046,5 @@ tr.pager td {
             margin: 0;
         }
 
-    .FilmGenre {
-        float: right;
-    }
+
 }

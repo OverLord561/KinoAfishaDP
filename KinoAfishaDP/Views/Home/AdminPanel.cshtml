@@ -15,7 +15,7 @@
     @Html.DropDownList("list1",
                         new SelectList(new[] { "Films","Sessions", "MovieHouses","UserComments"}))              
            
-            <input type="submit" name="operation" value="Перейти до редагування"/>
+            <input class="btn btn-default" type="submit" name="operation" value="Перейти до редагування"/>
         }
 @if(ViewBag.Result!=null)
               {
@@ -26,8 +26,9 @@
 
 
 
-@Html.ActionLink("Create new User","CreateUser","Home")<br />
-@Html.ActionLink("Редагування коментарів","Index","UserComments")<br />
-@Html.ActionLink("Видалити користувача","DeleteUser","Home")<br />
+<div class="btn btn-default">@Html.ActionLink("Create new User","CreateUser","Home") </div>
+<div class="btn btn-default">
+    @Html.ActionLink("Редагування коментарів", "Index", "UserComments") </div >
+    <div class="btn btn-default">@Html.ActionLink("Видалити користувача", "DeleteUser", "Home") </div>
 
 

@@ -11,7 +11,8 @@
         string toSession = "/Sessions/Index?NameOfFilm=" + @item.FilmName;
         
         <div class="row filmSeparator">
-             <div class="col-lg-3">
+            <!--Film image-->
+            <div class="col-lg-3">
             @if (TempData.Peek("_UserRole") as string == "Admin" || TempData.Peek("_UserRole") as string == "Moderator")
         {
            
@@ -25,9 +26,11 @@
                     <img src="@way"  width="150px" height ="200px" alt=@item.FilmName>
                 </a>
             
-           
+        
                 
                 </div>
+
+            <!--Film info-->
             <div class="col-lg-8">
                 <div class="row infoLine">
                     <div class="col-lg-4">
@@ -54,31 +57,36 @@
 
                 </div>
 
-
-                <div class="row infoFilm">
-
-                    @Html.DisplayFor(modelItem => item.FilmReview)
-
+                <!--film description-->
+                <div class="row ">
+                    <div class="col-lg-12">
+                        <div class="infoFilm">
+                            @Html.DisplayFor(modelItem => item.FilmReview)
+                        </div>
+                    </div>
+                   
+                
                 </div>
-                <div class="btnInTime">
-                <a class="toSession" title="Переглянути сеанси" href=@toSession>Встигаємо</a>
+                <div class="btnFilm">
+                <a  title="Переглянути сеанси" href=@toSession>Встигаємо</a>
                  </div>
                 </div>
-                 <div class="col-lg-1">
+            <!--Button for admin (edit, delete, create)-->
+            <div class="col-lg-1">
                 @if (TempData.Peek("_UserRole") as string == "Admin")
                 {
-                   <div class="dropdown">
-                                 <button class="dropbtn">Редагувати</button>
-                                 <div class="dropdown-content">
-                                     @Html.ActionLink("Edit", "Edit", new { id = item.FilmId })
-                                     @Html.ActionLink("Details", "Details", new { id = item.FilmId })
-                                     @Html.ActionLink("Delete", "Delete", new { id = item.FilmId })
-                                 </div>
-                             </div>   
+                    <div class="dropdown">
+                        <button class="dropbtn">Редагувати</button>
+                        <div class="dropdown-content">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.FilmId })
+                            @Html.ActionLink("Details", "Details", new { id = item.FilmId })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.FilmId })
+                        </div>
+                    </div>
                 }
-                        
-                </div>
-                
+
+            </div>
+            
       </div>       
     }
 

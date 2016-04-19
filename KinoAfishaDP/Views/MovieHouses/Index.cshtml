@@ -168,9 +168,9 @@
 
         @if (TempData.Peek("_UserRole") as string == "Admin")
         {
-            <p>
+            <span class="btnFilm">
                 @Html.ActionLink("Create New", "Create")
-            </p>
+            </span>
         }
 
         
