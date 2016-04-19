@@ -182,7 +182,7 @@
             {
                 string link = "MovieHouses/Index?name=" + @item.MovieHouseName.ToString();
                  <div class="row">
-                <div class="movieHouseImage col-lg-2">@Html.DisplayFor(modelItem => item.MovieHouseImage)</div>
+                <div class="movieHouseImage col-lg-2"><img height="100" width="130" src="@item.MovieHouseImage"></div>
                 
                 <div class="movieHouseInfo col-lg-7">
                     <h4><a href=@link>@Html.DisplayFor(modelItem => item.MovieHouseName)</a></h4>

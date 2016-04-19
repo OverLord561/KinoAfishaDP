@@ -39,6 +39,8 @@ namespace KinoAfishaDP.Models
         public int FilmPlus { get; set; }
         public int FilmMinus { get; set; }
 
+        public double FilmSum { get; set; }
+        public int FilmRave { get; set; }
         public List<Session> Session { get; set; }
     }
 }

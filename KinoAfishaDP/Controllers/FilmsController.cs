@@ -28,33 +28,6 @@ namespace KinoAfishaDP.Controllers
 
             return View(db.Films);
         }
-        //[HttpPost]
-        //public ActionResult Index(string actor, string FilmGenre, string FilmName, string FilmCountry,string data)
-        //{
-
-        //    //ViewBag.IsAdmin= TempData["_UserName"] as string =="Admin"?"Admin":null;
-
-        //    ViewBag.FilmName = new SelectList(db.Films, "FilmName", "FilmName");
-        //    ViewBag.FilmGenre = new SelectList(new[] { "Фантастика", "Боевик", "Триллер", "Приключения" });
-        //    ViewBag.FilmCountry = new SelectList(db.Films, "FilmCountry", "FilmCountry");
-        //    //ViewBag.FilmRating = new SelectList(db.Films, "FilmRating", "FilmRating");
-
-
-           
-          
-        //    var NAME = FilmName != "" ? db.Films.Where(x => x.FilmName.ToLower().Contains(FilmName.ToLower())) : db.Films;
-        //    var GANRE = FilmGenre != "" ? db.Films.Where(x => x.FilmGenre.ToLower().Contains(FilmGenre.ToLower())) : db.Films;
-        //    var ACTOR = actor != "" ? db.Films.Where(x => x.FilmActors.ToLower().Contains(actor.ToLower())) : db.Films;
-        //    var COUNTRY = FilmCountry != "" ? db.Films.Where(x => x.FilmCountry.ToLower().Contains(FilmCountry.ToLower())) : db.Films;
-        //    var DATA = data != "" ? db.Films.Where(x => x.FilmAge.ToLower().Contains(data.ToLower())) : db.Films;
-
-        //    var All = NAME.Intersect(GANRE).Intersect(ACTOR).Intersect(COUNTRY).Intersect(DATA);
-
-        //    return View(All);
-
-
-
-        //}
 
         public ActionResult Sort()
         {    
@@ -224,22 +197,11 @@ namespace KinoAfishaDP.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Index2(int? id, double? value)
-        {
-
-            HttpContext.Response.Cookies["id"].Value = id.ToString();
-            HttpContext.Response.Cookies["value"].Value = value.ToString();
-
-            return View();
-
-        }
-
 
 
         [HttpPost]
         [Authorize]
-        public ActionResult Review(int? numv, string action, string returnUrl, int? id, string value)
+        public ActionResult Review(int? numv, string action, string returnUrl, int? id, double value)
         {
 
             if (id != null)
@@ -247,7 +209,12 @@ namespace KinoAfishaDP.Controllers
 
                 Film reiting = db.Films.Find(id);
 
-                reiting.FilmRating = ((reiting.FilmRating + Convert.ToDouble(value)) / 2);
+                
+                reiting.FilmRave++;
+                reiting.FilmSum += value;
+
+                reiting.FilmRating = Convert.ToDouble((reiting.FilmSum  / reiting.FilmRave).ToString().Remove(3));
+
                 db.Entry(reiting).State = EntityState.Modified;
                 db.SaveChanges();
                 int num = Convert.ToInt32(HttpContext.Request.Cookies["num_of_film"].Value);
