@@ -165,12 +165,14 @@
             <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
         }
 
-
+        
         @if (TempData.Peek("_UserRole") as string == "Admin")
         {
+            @*<div class="float-right">
             <span class="btnFilm">
                 @Html.ActionLink("Create New", "Create")
             </span>
+            </div>*@
         }
 
         
@@ -182,9 +184,9 @@
             {
                 string link = "MovieHouses/Index?name=" + @item.MovieHouseName.ToString();
                  <div class="row">
-                <div class="movieHouseImage col-lg-2"><img height="100" width="130" src="@item.MovieHouseImage"></div>
+                <div class="movieHouseImage col-lg-2 col-lg-offset-1"><img height="100" width="130" src="@item.MovieHouseImage"></div>
                 
-                <div class="movieHouseInfo col-lg-7">
+                <div class="movieHouseInfo col-lg-6">
                     <h4><a href=@link>@Html.DisplayFor(modelItem => item.MovieHouseName)</a></h4>
                     <span class="glyphicon glyphicon-earphone"></span>@Html.DisplayNameFor(model => model.MovieHouseTelephone):
                         @Html.DisplayFor(modelItem => item.MovieHouseTelephone)

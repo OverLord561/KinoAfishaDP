@@ -213,7 +213,7 @@ namespace KinoAfishaDP.Controllers
                 reiting.FilmRave++;
                 reiting.FilmSum += value;
 
-                reiting.FilmRating = Convert.ToDouble((reiting.FilmSum  / reiting.FilmRave).ToString().Remove(3));
+                reiting.FilmRating = Convert.ToDouble((reiting.FilmSum  / reiting.FilmRave).ToString().Remove(2));
 
                 db.Entry(reiting).State = EntityState.Modified;
                 db.SaveChanges();

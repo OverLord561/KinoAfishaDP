@@ -16,15 +16,29 @@
        @Html.ActionLink("Всі коментарі", "Index")
     </p>
 }
+<div class="row">
+    <div class="col-lg-5">
 @using (@Html.BeginForm())
 {
-     <label>Ім'я користувача</label> @Html.TextBox("name")<br />  
-    <h3>Вкажіть часові рамки в короткому форматі: місяць/день/рік</h3>
-    <label>Від</label> @Html.TextBox("start")<br /> 
-    <label>До</label> @Html.TextBox("end")<br /> 
-    <label>Ім'я зареэстрованого користувача</label> @Html.TextBox("nickname")<br />    
-    <input type="submit" value="Шукати" />
+     <label>Ім'я користувача</label><br /> 
+      @Html.TextBox("name")<br />  
+    <label>Вкажіть часові рамки: місяць/день/рік</label><br /> 
+     @Html.TextBox("start")<span class="glyphicon glyphicon-minus"></span>
+     @Html.TextBox("end")<br />
+    <label>Login зареєстрованого користувача</label><br />  @Html.TextBox("nickname")<br />    
+    <input class="btnSearchComent" type="submit" value="Шукати" />
 }
+        </div>
+    <div class="col-lg-6">
+        <h4>Rules</h4>
+        <p>Includes over 250 glyphs in font format
+             from the Glyphicon Halflings set. Glyphicons Halflings are 
+            normally not available for free, but their creator has made them available for 
+            Bootstrap free of cost. As a thank you, we only ask that you include a link back to 
+            Glyphicons whenever possible.</p>
+
+    </div>
+ </div>
 <table class="table table-striped">
     <tr>
         <th>
