@@ -169,14 +169,16 @@ namespace KinoAfishaDP.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AdminPanel(string list1)
         {
-            var Films = db.Films.ToList();
-            var Sessions = db.Sessions.ToList(); ;
-            var MovieHouses = db.MovieHouses.ToList(); ;
-            var UserComments = db.UserComments.ToList();
-
-          
-
-            return View();
+            switch (list1)
+            {
+                  case "Films": return RedirectToAction("Index", "Films"); 
+                  case "Sessions":  return RedirectToAction("Index", "Sessions"); 
+                  case "MovieHouses": return RedirectToAction("Index", "MovieHouses"); 
+                  case "UserComments": return RedirectToAction("Index", "UserComments"); 
+                  default: return View();
+            }
+            
+            
         }
 
         public ActionResult CreateUser()

@@ -1,7 +1,7 @@
 ﻿@model KinoAfishaDP.Models.Review
 
 @{
-    ViewBag.Title = "Review";
+    ViewBag.Title = "Про прем'єру";
     Layout = "~/Views/Shared/_Layout.cshtml";
     //Layout = null;
 
@@ -55,10 +55,7 @@
     <script src="~/Content/OwlCarousel/owl.carousel.min.js"></script>
 
 }
-
-
-<h2>Review</h2>
-
+<br/>
 
 @{var tr = "https://www.youtube.com/results?search_query=" + Model.FilmName_Review;}
             
@@ -71,7 +68,7 @@
                 <h3> <a href="@tr" target="_blank" title="Глянути відео в YOUTube">
                     @Html.DisplayFor(model => Model.FilmName_Review) </a></h3>
                 <table class="filmTable">
-                <tr><td>фільму:</td>  <td> @Html.DisplayFor(model => Model.FilmLength_Review)</td></tr>
+                <tr><td>Тривалість:</td>  <td> @Html.DisplayFor(model => Model.FilmLength_Review)</td></tr>
                 
                 <tr><td>Рейтинг:</td> <td> @Html.DisplayFor(model => Model.FilmRating_Review)
                 <tr><td>Жанр:</td>   <td>  @Html.DisplayFor(model => Model.FilmGenre_Review)</tr>
@@ -142,6 +139,7 @@
 </div>
 @if ((TempData.Peek("Golos") as string) != null)
 { <h2>@(TempData["Golos"] as string)</h2> }
+
 @using (@Html.BeginForm("Review", "Films"))
 {
             

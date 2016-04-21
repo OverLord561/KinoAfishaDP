@@ -76,11 +76,11 @@
 
                         @if (TempData.Peek("_UserRole") as string == "Admin")
                         {
-                            
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.SessionId })
-                                    @Html.ActionLink("Details", "Details", new { id = item.SessionId }) 
+
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.SessionId })<span> |</span>
+                                    @Html.ActionLink("Details", "Details", new { id = item.SessionId })<span> |</span>
                                     @Html.ActionLink("Delete", "Delete", new { id = item.SessionId })
-                               
+
                         }
                     </td>
 

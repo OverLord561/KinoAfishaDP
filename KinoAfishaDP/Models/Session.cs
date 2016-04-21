@@ -10,6 +10,7 @@ namespace KinoAfishaDP.Models
     {
         public int SessionId { get; set; }
 
+        [Display(Name = "Час показу")]
         [Required(ErrorMessage = "Дата має відповідати формату 12/24/2004 12:42:25 AM")]
         public DateTime SessionTimePokaz { get; set; }
 

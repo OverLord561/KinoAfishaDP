@@ -201,7 +201,7 @@ namespace KinoAfishaDP.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Review(int? numv, string action, string returnUrl, int? id, double value)
+        public ActionResult Review(int? numv, string action, string returnUrl, int? id, string value)
         {
 
             if (id != null)
@@ -211,10 +211,10 @@ namespace KinoAfishaDP.Controllers
 
                 
                 reiting.FilmRave++;
-                reiting.FilmSum += value;
+                reiting.FilmSum += Convert.ToDouble(value);
 
-                reiting.FilmRating = Convert.ToDouble((reiting.FilmSum  / reiting.FilmRave).ToString().Remove(3));
-
+                reiting.FilmRating = Math.Round((reiting.FilmSum  / reiting.FilmRave),2);
+                
                 db.Entry(reiting).State = EntityState.Modified;
                 db.SaveChanges();
                 int num = Convert.ToInt32(HttpContext.Request.Cookies["num_of_film"].Value);
@@ -240,7 +240,7 @@ namespace KinoAfishaDP.Controllers
                 {
                     //return Content("<h1> Ви уже голосували </h1>");
                     var num = HttpContext.Request.Cookies["num_of_film"].Value;
-                    HttpContext.Response.Cookies["Golos"].Value = "Ви уже голосували!";
+                    HttpContext.Response.Cookies["Golos"].Value = "You have voted already!";
 
 
                     TempData["Golos"] = HttpContext.Request.Cookies["Golos"].Value;

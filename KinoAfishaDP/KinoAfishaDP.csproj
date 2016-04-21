@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -198,6 +199,10 @@
     <Compile Include="Migrations\201604101029047_asd.Designer.cs">
       <DependentUpon>201604101029047_asd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604191256562_raveIt.cs" />
+    <Compile Include="Migrations\201604191256562_raveIt.Designer.cs">
+      <DependentUpon>201604191256562_raveIt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AFISHAContext.cs" />
@@ -220,6 +225,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Background.png" />
     <Content Include="Content\Images\DeadPool1.png" />
     <Content Include="Content\Images\DeadPool2.png" />
     <Content Include="Content\Images\DeadPool3.png" />
@@ -449,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604101029047_asd.resx">
       <DependentUpon>201604101029047_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604191256562_raveIt.resx">
+      <DependentUpon>201604191256562_raveIt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

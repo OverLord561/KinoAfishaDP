@@ -15,7 +15,7 @@
     @Html.DropDownList("list1",
                         new SelectList(new[] { "Films","Sessions", "MovieHouses","UserComments"}))              
            
-            <input class="btn btn-default" type="submit" name="operation" value="Перейти до редагування"/>
+            <input class="btn btn-default" type="submit" name="operation" value="Перейти до редагування"/> 
         }
 @if(ViewBag.Result!=null)
               {
@@ -25,10 +25,19 @@
 
 
 
-
-<div class="btn btn-default">@Html.ActionLink("Create new User","CreateUser","Home") </div>
+<br />
+<div class="btn btn-default">@Html.ActionLink("Створити нового користувача","CreateUser","Home") </div>
 <div class="btn btn-default">
     @Html.ActionLink("Редагування коментарів", "Index", "UserComments") </div >
     <div class="btn btn-default">@Html.ActionLink("Видалити користувача", "DeleteUser", "Home") </div>
 
-
+<h3>ОБОВ'ЯЗКИ АДМІНІСТРАТОРА</h3>
+<h4>Підтримувати порядок та чистоту на порталі:</h4>
+<ul>
+    <li>Ведення БД: "Фільми", "Кінотеатри", "Сеанси".</li>   
+    <li>Слідкувати за актуальністю та коректністю інформації, що надається відвідувачам.</li>
+    <li>Відбирати якісний контент та вчасно інформувати користувачів про нові заходи.</li>
+    <li>При неодноразовому порушенні правил видаляти профіль користувача-порушника назавжди.</li>
+    <li>Повідомляти розробників веб-додатку про баги у функціоналі.</li>   
+</ul>
+<h4>Вам надається доступ до всіх функціональних  можливостей модератора</h4>
