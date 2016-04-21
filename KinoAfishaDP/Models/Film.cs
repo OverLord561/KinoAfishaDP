@@ -11,6 +11,7 @@ namespace KinoAfishaDP.Models
         public int FilmId { get; set; }
 
         [Required(ErrorMessage = "Вкажіть назву фільму")]
+        [Display(Name = "Прем'єра")]
         public string FilmName { get; set; }
 
         [Required(ErrorMessage = "Вкажіть рейтинг")]

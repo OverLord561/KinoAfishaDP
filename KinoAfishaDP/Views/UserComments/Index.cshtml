@@ -18,6 +18,7 @@
 }
 <div class="row">
     <div class="col-lg-5">
+
         @using (@Html.BeginForm())
         {
             <label>Ім'я користувача:</label><br />
@@ -40,6 +41,8 @@
          </ul>
     </div>
 </div>
+
+
 <table class="table table-striped">
     <tr>
         <th>
@@ -108,21 +111,3 @@
         </tr>
     }
 </table>
-@*<div>
-              @grid.GetHtml(
-        tableStyle: "grid",
-                  headerStyle: "header",
-                  rowStyle: "row",
-                  alternatingRowStyle: "alt-row",
-                  footerStyle: "footer",
-                  htmlAttributes: new { cellpadding = "6px", cellspacing = "0px" },
-        columns: grid.Columns(
-        grid.Column(columnName: "Id",header:"Порядковий номер"),
-        grid.Column(columnName: "ReviewID",header:"Номер фільма"),
-        grid.Column(columnName: "LabelText",header:"Повідомлення",canSort:false),
-        grid.Column(columnName: "E_mail", header:"E_mail",canSort:false),
-        grid.Column(columnName: "Name",header:"Ім'я"),
-        grid.Column(columnName: "Date", header :"Дата публікації")
-        )
-    )
-    </div>*@

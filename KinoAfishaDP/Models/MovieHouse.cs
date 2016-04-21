@@ -13,6 +13,7 @@ namespace KinoAfishaDP.Models
         public string MovieHouseImage { get; set; }
 
         [Required(ErrorMessage = "Вкажіть назву кінотеатру")]
+        [Display(Name = "Кінотеатр")]
         public string MovieHouseName { get; set; }
 
         [Required(ErrorMessage = "Вкажіть телефонний номер кінотеатру")]

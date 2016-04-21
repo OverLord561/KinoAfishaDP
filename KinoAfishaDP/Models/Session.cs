@@ -17,7 +17,9 @@ namespace KinoAfishaDP.Models
 
         public int FilmId { get; set; }
         public int MovieHouseId { get; set; }
+        
         public Film Film { get; set; }
+        
         public MovieHouse MovieHouse { get; set; }
     }
 }

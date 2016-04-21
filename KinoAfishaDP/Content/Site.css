@@ -1,5 +1,5 @@
 ﻿html {
-    background-color: #e2e2e2;   
+    background-color: #e2e2e2;       
     margin: 0;
     padding: 0;
 }
@@ -40,7 +40,8 @@
 	
 body {
     background-color: #fff;
-    
+    /*background:url(/Content/Background.png);
+    background-image:url(/Content/Background.png);*/
     border-top: solid 10px #fff;
     color: #333;
     font-size: .85em;
@@ -137,8 +138,7 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
-    /*background-image:url(/Content/Images/Background.png);*/
+    background-color: #efeeef;   
     clear: both;
     padding-bottom: 5px;
 }

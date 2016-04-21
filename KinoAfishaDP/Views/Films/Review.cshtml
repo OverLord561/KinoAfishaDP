@@ -65,8 +65,9 @@
         <img src="@Model.FilmPictures_Review.Split(',')[0]" width="300" height="250" alt ="Pictures"/>
             </div>
             <div class="col-lg-8">
-                <h3> <a href="@tr" target="_blank" title="Глянути відео в YOUTube">
-                    @Html.DisplayFor(model => Model.FilmName_Review) </a></h3>
+                <h3>
+                 <a href="@tr" target="_blank" title="Глянути відео в YOUTube">@Html.DisplayFor(model => Model.FilmName_Review) </a>
+                </h3>
                 <table class="filmTable">
                 <tr><td>Тривалість:</td>  <td> @Html.DisplayFor(model => Model.FilmLength_Review)</td></tr>
                 

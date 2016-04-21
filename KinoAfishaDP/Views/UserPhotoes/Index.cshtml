@@ -44,6 +44,7 @@
            <img width=150 height=100 src=@Html.DisplayFor(modelItem => item.PHOTO) alt=@item.NAME>
         </td>
         <td>
+            |@Html.ActionLink("Delete", "Delete", new { id = item.ProfileID })
            |@Html.ActionLink("Edit", "Edit", new { id=item.ProfileID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProfileID }) |
          
