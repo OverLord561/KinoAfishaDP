@@ -71,8 +71,8 @@
 
 
                     // Blue marker from google
+               //    marker.setIcon("~/Images/cinema.png")
                     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-
 
 
                     var contentString = "<div class='stationInfo'><h3>Кінотеатр: " + item.MovieHouseName
@@ -157,7 +157,7 @@
 
         @foreach (var item in Model)
             {
-                string link = "MovieHouses/Index?name=" + @item.MovieHouseName.ToString();
+                string link = "/MovieHouses/Index?name=" + @item.MovieHouseName.ToString();
 
             
 

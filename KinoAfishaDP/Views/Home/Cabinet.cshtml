@@ -1,60 +1,77 @@
 ﻿@model KinoAfishaDP.Models.UserPhoto
 @{
-    ViewBag.Title = "Cabinet";
+    ViewBag.Title = "Ваш особистий профіль";
     List<KinoAfishaDP.Models.UserPhoto> userphoto = ViewBag.UserPhoto;
     
 }
 @*@model KinoAfishaDP.Models.LoginModel*@
 
-<div></div>
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
-<div>
-   
-       @if (@ViewBag.zzz != null)
-       { 
-           <h1>Порядковий в UserPhotoes @ViewBag.zzz</h1>;
-       }
-       else 
-       {
-          <h1>Пусто</h1> 
-       }
+<div class="row">
+    <div class="col-lg-5">
+        <hgroup class="title">
+            <h3>@ViewBag.Title.</h3>
 
-    @if (Request.IsAuthenticated)
-    {
-        <text>
-        Hello, @User.Identity.Name
+        </hgroup>
+        <div>
 
-        </text>
-    }
 
-   
+
+            @if (Request.IsAuthenticated)
+            {
+                <text>
+                    Привіт, @User.Identity.Name
+
+                </text>
+            }
+
+
+        </div>
+
+        @foreach (var item in userphoto)
+        {
+
+            <img width="250" height="200" src="@item.Photo" />
+            <br />
+
+
+
+        }
+
+        <h3>Виберіть файл для загрузки</h3>
+
+        <form action="@Url.Action("Cabinet", "Home")" method="post" enctype="multipart/form-data">
+            Файл -
+            <input type="file" name="file"  />
+            <br />
+            <input type="submit" value="Відправити фотографію" />
+
+        </form>
+    </div>
+    <div class="col-lg-7">
+        <h3>Правила поведінки:</h3>
+        
+        <ul>
+            <li>Використовувати нецензурні вирази в будь-якій формі.</li>
+            <li>Ображати і дискримінувати учасників за будь-якою ознакою.</li>
+            <li>Ображати культуру, традиції та інші національні цінності будь-якого народу чи країни.</li>
+            <li>Зловживати режимом <b>Caps Lock</b> і великим розміром шрифту як в назві повідомлення, так і в ньому самому.</li>
+            <li>Розсилати спам за допомогою особистих повідомлень і e - mail.</li>
+            <li>Забороняється до публікації свідомо помилкова інформація, наклеп.</li>
+            
+        </ul>
+        <h3>Санкції за порушення правил:</h3>
+
+        <ul>
+            <li>усне попередженн;</li>
+            <li>винесення попередження у вигляді жовтої або червоної картки;</li>
+            <li>позбавлення прав на публікацію повідомлень;</li>
+            <li>позбавлення всіх прав - використовується як крайня міра покарання за тяжкі порушення;</li>
+            <li>бан за ip адресою і / або видалення користувача - використовується як міра покарання за особливо тяжкі порушення.</li>
+            
+
+        </ul>
+    </div>
 </div>
-
-@foreach (var item in userphoto)
-{
-    
-<img width="250" height="200" src="@item.Photo"  />
-    <br />
-    <h3>Порядковий в UserProfile:@item.UserPhotoId</h3>
-    
-  
-}
-
-<h3>Виберіть файл для загрузки</h3>
-
-<form action="@Url.Action("Cabinet", "Home")" method="post" enctype="multipart/form-data">
-    Файл -
-    <input type="file" name="file" />
-    <br />
-    <input type="submit" />
-
-</form>
- <p>
-        @ViewBag.Message
-    </p>
  
 
 

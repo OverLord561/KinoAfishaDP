@@ -6,7 +6,7 @@
     @foreach (var item in Model)
     {
         
-        string link = "Films/Review?num=" + @item.FilmId.ToString();
+        string link = "/Films/Review?num=" + @item.FilmId.ToString();
         string way = "/Content/Images/" + item.FilmName + ".png";
         string toSession = "/Sessions/Index?NameOfFilm=" + @item.FilmName;
         
@@ -33,9 +33,9 @@
             <!--Film info-->
             <div class="col-lg-8">
                 <div class="row infoLine">
-                    <div class="col-lg-4">
-                        @Html.DisplayFor(modelItem => item.FilmName)
-                    </div>
+                    <div id="filmtitle" class="col-lg-4">
+                  <h4> <span class="label label-info">@Html.DisplayFor(modelItem => item.FilmName)  </span></h4>      
+</div>
                     <div class="col-lg-4">
                         @Html.DisplayFor(modelItem => item.FilmAge)
                     </div>

@@ -31,7 +31,7 @@ namespace KinoAfishaDP.Controllers
 
         public ActionResult Sort()
         {    
-            return PartialView(db.Films);
+            return PartialView(db.Films.OrderByDescending(x=>x.FilmId));
             
         }
         [HttpPost]

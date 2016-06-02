@@ -665,6 +665,9 @@ tr{
     margin-top: 10px;
 
 }
+#filmtitle {
+margin-top:-10px;
+}
 .infoFilm {
     
     border-radius: 5px;
