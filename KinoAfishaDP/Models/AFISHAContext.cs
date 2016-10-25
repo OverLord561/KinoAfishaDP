@@ -7,7 +7,7 @@ using System.Web;
 namespace KinoAfishaDP.Models
 {
     
-        public class AFISHAContext : DbContext
+        public class AFISHAContext: DbContext
         {
             public AFISHAContext() : base("AFISHAContext") { }
 

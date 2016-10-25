@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201604191256562_raveIt.Designer.cs">
       <DependentUpon>201604191256562_raveIt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610252318242_RebuildDB.cs" />
+    <Compile Include="Migrations\201610252318242_RebuildDB.Designer.cs">
+      <DependentUpon>201610252318242_RebuildDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AFISHAContext.cs" />
@@ -458,6 +462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604191256562_raveIt.resx">
       <DependentUpon>201604191256562_raveIt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252318242_RebuildDB.resx">
+      <DependentUpon>201610252318242_RebuildDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

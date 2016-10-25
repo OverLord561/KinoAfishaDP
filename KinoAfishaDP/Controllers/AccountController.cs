@@ -19,7 +19,7 @@ namespace KinoAfishaDP.Controllers
     [InitializeSimpleMembershipAttribute]
     public class AccountController : Controller
     {
-        private AFISHAContext db = new AFISHAContext();
+        private UsersContext db = new UsersContext();
         //
         // GET: /Account/Login
 

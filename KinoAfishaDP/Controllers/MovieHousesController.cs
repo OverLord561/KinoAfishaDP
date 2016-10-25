@@ -11,7 +11,7 @@ namespace KinoAfishaDP.Controllers
 {
     public class MovieHousesController : Controller
     {
-        private AFISHAContext db = new AFISHAContext();
+        private UsersContext db = new UsersContext();
 
         //
         // GET: /MovieHouses/

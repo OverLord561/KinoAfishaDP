@@ -18,7 +18,7 @@ namespace KinoAfishaDP.Controllers
     public class HomeController : Controller
     {
 
-        private AFISHAContext db = new AFISHAContext();
+        private UsersContext db = new UsersContext();
         private UsersContext userprofile = new UsersContext();
 
         public ActionResult Index()

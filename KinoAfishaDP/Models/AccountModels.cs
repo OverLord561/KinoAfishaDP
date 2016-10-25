@@ -12,10 +12,15 @@ namespace KinoAfishaDP.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("DefaultConnection")
+            : base("AFISHAContext")
         {
         }
 
+        public DbSet<Film> Films { get; set; }
+        public DbSet<MovieHouse> MovieHouses { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<UserComment> UserComments { get; set; }
+        public DbSet<UserPhoto> UserPhotoes { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
     }
 
